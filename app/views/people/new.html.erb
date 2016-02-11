@@ -1,0 +1,40 @@
+<h1> Sign Up </h1>
+
+<!-- Following is for error checking validation -->
+
+<%= form_for @person do |f| %>
+  <% if @person.errors.any? %>
+    <div class="error_messages">
+      <h2> Oops! Some errors occurred! </h2>
+      <ul>
+        <% @person.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+        <% end %>
+      </uL>
+    </div>
+  <% end %>
+  <!-- End of error checking.. -->
+
+  <!-- Text fields for signing up:  -->
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :user_name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p class="submission">
+    <%= f.submit %> </p>
+
+<% end %>
