@@ -7,9 +7,9 @@ class PeopleController < ApplicationController
   #Method create to save the user
   def create
     @person = Person.new(person_params)
-
+    #if saved succesfully should go back to root_url and output signed up
     if @person.save
-      reredirect to root_url, :notice => "signed up"
+      redirect_to root_url, :notice => "signed up"
     else
       render 'new'
     end

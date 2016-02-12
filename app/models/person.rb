@@ -5,9 +5,11 @@ class Person < ActiveRecord::Base
 
   #validate that the password confirmation (do they match?) is present
   validates_confirmation_of :password
+
   #validates that all requried text is entered
-  validates_presence_of :password, :on => :create
   
+  validates_presence_of :password, :on => :create
+
   validates :email, presence: true,
                     length: {minimum: 7}
   validates_uniqueness_of :email
