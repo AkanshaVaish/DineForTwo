@@ -1,13 +1,14 @@
 class Person < ActiveRecord::Base
   #Make an attribute accessor for password
   attr_accessor :password
+  attr_accessor :password_salt
   before_save :encrypt_password
 
   #validate that the password confirmation (do they match?) is present
   validates_confirmation_of :password
 
   #validates that all requried text is entered
-  
+
   validates_presence_of :password, :on => :create
 
   validates :email, presence: true,
