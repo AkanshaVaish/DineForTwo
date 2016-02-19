@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get "log_in" => 'sessions#new', :as => "log_in"
+
   get "sign_up" => "people#new", :as => "sign_up"
 
-  root :to => 'people#new'
+  root :to => "people#new"
 
   resources :people
+  resources :sessions
 end

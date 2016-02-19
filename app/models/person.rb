@@ -1,4 +1,7 @@
 class Person < ActiveRecord::Base
+
+
+
   #Make an attribute accessor for password
   attr_accessor :password
   attr_accessor :password_salt
@@ -18,7 +21,14 @@ class Person < ActiveRecord::Base
                     length: {minimum: 5, maximum: 12}
   validates_uniqueness_of :name
 
-
+  def self.authenticate(name, password)
+    person = find_by_name(name)
+    if person && person.password_hash == BCrypt::Engine.hash_secret(password, person.password_salt)
+      person
+    else
+      nil
+    end
+  end
   #encrypts the password the user enters
   def encrypt_password
     if password.present?
