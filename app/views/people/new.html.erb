@@ -3,7 +3,7 @@
 <!--Form needs some refactoring-->
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-5">
+  <div class="col-md-6 col-md-offset-3">
     <!-- Following is for error checking validation -->
     <%= form_for @person do |f| %>
       <% if @person.errors.any? %>
@@ -20,22 +20,17 @@
   
     <!-- Text fields for signing up:  -->
     <%= f.label :email %>
-    <br>
     <%= f.text_field :email %>
-    <br>
+
     <%= f.label :name %>
-    <br>
     <%= f.text_field :name %>
-    <br>
+
     <%= f.label :password %>
-    <br>
     <%= f.password_field :password %>
-    <br>
+
     <%= f.label :password_confirmation %>
-    <br>
     <%= f.password_field :password_confirmation %>
-    <br>
-    <br>
+
     <%= f.submit "Create my account", class: "btn btn-primary" %>
   
     <% end %>
