@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get "log_in" => 'sessions#new', :as => "log_in"
-
-  get "sign_up" => "people#new", :as => "sign_up"
-
-  root 'people#new'
+  
+  root 'static_pages#home'
+  
+  get 'contact' => 'static_pages#contact'
+  get "log_in" => 'sessions#new'
+  get "sign_up" => "people#new"
 
   resources :people
-  resources :sessions
+  resources :sessions # Might not be necessary sessions has been fully implemented
 end
