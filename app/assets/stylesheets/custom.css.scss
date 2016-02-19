@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 $gray-medium-light: #eaeaea;
+// Variable that holds color to allow for easy customization
 
 /* header */
 
@@ -54,4 +55,9 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+/* typography */
+h1 {
+  text-align: center;
 }

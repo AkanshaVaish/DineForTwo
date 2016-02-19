@@ -1,43 +1,43 @@
-<div class="container">
+<h1> Sign Up </h1>
 
-  <h1> Sign Up </h1>
+<!--Form needs some refactoring-->
 
-  <!-- Following is for error checking validation -->
-
-  <%= form_for @person do |f| %>
-    <% if @person.errors.any? %>
-      <div class="error_messages">
-        <h2> Oops! Some errors occurred! </h2>
-        <ul>
-          <% @person.errors.full_messages.each do |msg| %>
-            <li> <%= msg %> </li>
-          <% end %>
-        </uL>
-      </div>
-    <% end %>
-    <!-- End of error checking.. -->
-
+<div class="row">
+  <div class="col-md-6 col-md-offset-5">
+    <!-- Following is for error checking validation -->
+    <%= form_for @person do |f| %>
+      <% if @person.errors.any? %>
+        <div class="error_messages">
+          <h2> Oops! Some errors occurred! </h2>
+          <ul>
+            <% @person.errors.full_messages.each do |msg| %>
+              <li> <%= msg %> </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <!-- End of error checking.. -->
+  
     <!-- Text fields for signing up:  -->
-
-    <p>
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </p>
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </p>
-    <p>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </p>
-
-
-      <button type="button" class="btn btn-primary"><%= f.submit :CreateUser %> </button>
-
-  <% end %>
+    <%= f.label :email %>
+    <br>
+    <%= f.text_field :email %>
+    <br>
+    <%= f.label :name %>
+    <br>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :password %>
+    <br>
+    <%= f.password_field :password %>
+    <br>
+    <%= f.label :password_confirmation %>
+    <br>
+    <%= f.password_field :password_confirmation %>
+    <br>
+    <br>
+    <%= f.submit "Create my account", class: "btn btn-primary" %>
+  
+    <% end %>
+  </div>
 </div>
