@@ -1,4 +1,10 @@
 class PeopleController < ApplicationController
+
+  #Method to show the user profile
+  def show
+    @person = Person.find(params[:id])
+  end
+
   #Method new to create a new sign up
   def new
     @person = Person.new
@@ -9,7 +15,7 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     #if saved succesfully should go back to root_url and output signed up
     if @person.save
-      redirect_to root_url, :notice => "signed up"
+      redirect_to @person
     else
       render 'new'
     end
