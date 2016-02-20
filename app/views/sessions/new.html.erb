@@ -1,20 +1,18 @@
-<h1>Log In</h1>
+<!----- new html page for SESSIONS -->
 
-<!--Form needs some refactoring-->
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-5">
-    <%= form_tag sessions_path do %>
-      <%= label_tag :name %>
-      <br>
-      <%= text_field_tag :name, params[:name] %>
-      <br>
-      <%= label_tag :password %>
-      <br>
-      <%= password_field_tag :password %>
-      <br>
-      <p class="button"> <%= submit_tag %> </p>
-    <% end %>
-  </div>
-</div>
+<% provide(:title, "Log In") %>
 
+<h1> Log in </h1>
+
+<%= form_for(:session, url: log_in_path) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+
+  <%= f.submit "Log in", class: "btn btn-primary" %>
+<% end %>
+
+  <p> New User? <%= link_to "Sign up now!", sign_up_path %> </p>
