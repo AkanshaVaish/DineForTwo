@@ -1,7 +1,11 @@
+
 <% provide(:title, "Log In") %>
 <h1>Log In</h1>
 
-<!--Form needs some refactoring-->
+<!----- new html page for SESSIONS -->
+
+
+
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -13,4 +17,18 @@
       <p class="button"> <%= submit_tag %> </p>
     <% end %>
   </div>
-</div>
+</div><% provide(:title, "Log In") %>
+
+<h1> Log in </h1>
+
+<%= form_for(:session, url: log_in_path) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+
+  <%= f.submit "Log in", class: "btn btn-primary" %>
+<% end %>
+
+  <p> New User? <%= link_to "Sign up now!", sign_up_path %> </p>
