@@ -7,6 +7,6 @@
     <p><strong> User's email: </strong><%= @person.email %></p>
     
     <p><%= link_to "Edit", edit_person_path(@person) %></p>
-    <p><%= link_to "Delete", @person, :confirm => "Are you sure?", :method => :delete %></p>
+    <p><%= link_to "Delete", @person, data: {confirm: "Are you sure?"}, :method => :delete %></p>
   </div>
 </div>
