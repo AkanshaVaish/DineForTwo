@@ -32,9 +32,9 @@ class PeopleController < ApplicationController
   
   #Method delete user's account data
   def destroy
-    @person = @person.find(params[:id])
+    @person = Person.find(params[:id])
     @person.destroy
-    redirect_to root_path
+    redirect_to root_url
   end
 
   private

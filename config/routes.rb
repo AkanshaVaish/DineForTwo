@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete 'log_out' => 'sessions#destroy', :as => "log_out"
 
   get "sign_up" => "people#new", :as => "sign_up"
-  delete 'remove_profile' => "people#destroy", :as => "remove_profile"
+  #delete 'remove_profile' => "people#destroy", :as => "remove_profile"
 
 
 
