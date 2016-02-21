@@ -26,9 +26,15 @@ class PeopleController < ApplicationController
     
   end
   
+  def update
+  
+  end
+  
   #Method delete user's account data
-  def delete
-    
+  def destroy
+    @person = @person.find(params[:id])
+    @person.destroy
+    redirect_to root_path
   end
 
   private
