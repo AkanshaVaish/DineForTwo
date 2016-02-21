@@ -5,5 +5,7 @@
   <div class="col-md-6 col-md-offset-3">
     <p><strong> User Name: </strong><%= @person.name %></p>
     <p><strong> User's email: </strong><%= @person.email %></p>
+    
+    <p><%= link_to "Edit", edit_person_path(@person) %></p>
   </div>
 </div>

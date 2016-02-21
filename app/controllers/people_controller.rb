@@ -20,6 +20,16 @@ class PeopleController < ApplicationController
       render 'new'
     end
   end
+  
+  #Method pop up the current user profile and allow user to edit it
+  def edit
+    
+  end
+  
+  #Method delete user's account data
+  def delete
+    
+  end
 
   private
     def person_params
