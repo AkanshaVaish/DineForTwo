@@ -19,11 +19,12 @@ class PeopleController < ApplicationController
     @person = Person.new
   end
 
-  #Method create to save the user
+  # Method create to save the user
   def create
     @person = Person.new(person_params)
-    #if saved succesfully should go back to root_url and output signed up
+    # if saved succesfully should go back to root_url and output signed up
     if @person.save
+      flash[:success] = "Successfully signed up for Dine for Two!"
       redirect_to @person
     else
       render 'new'
