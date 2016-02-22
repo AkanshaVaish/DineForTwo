@@ -1,20 +1,21 @@
 class PeopleController < ApplicationController
 
-  #Method to show the user profile
+  # Method to show the user profile
   def show
     @person = Person.find(params[:id])
   end
 
-  #Method new to create a new sign up
+  # Method new to create a new sign up
   def new
     @person = Person.new
   end
 
-  #Method create to save the user
+  # Method create to save the user
   def create
     @person = Person.new(person_params)
-    #if saved succesfully should go back to root_url and output signed up
+    # if saved succesfully should go back to root_url and output signed up
     if @person.save
+      flash[:success] = "Successfully signed up for Dine for Two!"
       redirect_to @person
     else
       render 'new'
