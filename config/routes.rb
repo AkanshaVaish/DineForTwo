@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
-
-
   root 'static_pages#home'
 
-  get 'contact' => 'static_pages#contact'
+  get 'about' => 'static_pages#about'
 
-
-  get "log_in" => 'sessions#new', :as => "log_in"
-  post 'log_in' => 'sessions#create', :as => "logged_in"
-  delete 'log_out' => 'sessions#destroy', :as => "log_out"
+  get "log_in" => 'sessions#new'
+  post 'log_in' => 'sessions#create'
+  delete 'log_out' => 'sessions#destroy'
 
   get "sign_up" => "people#new", :as => "sign_up"
-
-
-
-
-
+  #   ^
+  # This part of the syntax already creates a named route, so it isn't
+  # necessary to add :as => 'sign_up' to create the named route.
   resources :people
   resources :sessions
 end
