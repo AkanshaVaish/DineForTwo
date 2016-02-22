@@ -23,11 +23,17 @@ class PeopleController < ApplicationController
   
   #Method pop up the current user profile and allow user to edit it
   def edit
-    
+    @person = Person.find(params[:id])
   end
   
   def update
-  
+    @person =  Person.find(params[:id])
+    
+    if @person.update_attributes(person_edit_params)
+      redirect_to person_path, :notice => "Your profile has been updated!"
+    else
+      render edit_person_path
+    end
   end
   
   #Method delete user's account data
@@ -41,6 +47,12 @@ class PeopleController < ApplicationController
     def person_params
       params.require(:person).permit(:email, :name, :password, :password_confirmation)
     end
+    
+    #Parameters allowed for edit
+    def person_edit_params
+      params.require(:person).permit(:email, :name)
+    end
+    
 
 
 end
