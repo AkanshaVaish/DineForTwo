@@ -13,9 +13,9 @@ class StaticPagesControllerTest < ActionController::TestCase
     # Selects the title tag and asserts it matches the given string
   end
   
-  test "should get contact" do
-    get :contact
+  test "should get about" do
+    get :about
     assert_response :success
-    assert_select "title", "Contact | #{@base_title}"
+    assert_select "title", "About | #{@base_title}"
   end
 end

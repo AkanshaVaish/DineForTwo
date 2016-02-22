@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get "sign_up" => "people#new", :as => "sign_up"
   #   ^
   # This part of the syntax already creates a named route, so it isn't
-  # necessary to add :as => 'sign_up' to create the named route.
+  # necessary to add :as => 'sign_up' to create the named route, as seen above.
+  
   resources :people
   resources :sessions
 end

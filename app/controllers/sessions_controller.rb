@@ -3,13 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    person = Person.find_by(name: params[:session][:name].downcase)
+    @person = Person.find_by(name: params[:session][:name])
 
-    if person && person.authenticate(params[:session][:password])
-      log_in person
-      redirect_to person
+    if @person && @person.authenticate(params[:session][:password])
+      log_in @person
+      redirect_to @person
     else
-      
       render 'new'
 
     end
