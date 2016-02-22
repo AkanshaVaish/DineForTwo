@@ -5,9 +5,19 @@ class PeopleLoginTest < ActionDispatch::IntegrationTest
     @person = people(:john)
   end
   
+  test "login with invalid information" do
+    get log_in_path
+    assert_template 'sessions/new'
+    post log_in_path, session: { email: "", password: "" }
+    assert_template 'sessions/new'
+    assert_not flash.empty?
+    get root_path
+    assert flash.empty?
+  end
+  
   test "login with valid information" do
     get log_in_path
-    post log_in_path, session: { name: @person.email, password: 'password' }
+    post log_in_path, session: { email: @person.email, password: 'password' }
     assert_redirected_to @person
     follow_redirect!
     assert_template 'people/show'
