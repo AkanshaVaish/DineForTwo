@@ -34,6 +34,7 @@ class PeopleController < ApplicationController
   def update
     @person =  Person.find(params[:id])
     
+    #if @person.update(person_params)
     if @person.update(person_params)
       redirect_to @person
     else
@@ -53,10 +54,10 @@ class PeopleController < ApplicationController
       params.require(:person).permit(:email, :name, :password, :password_confirmation)
     end
     
-    #Parameters allowed for edit
-    def person_edit_params
-      params.require(:person).permit(:email, :name)
-    end
+    # #Parameters allowed for edit
+    # def person_edit_params
+    #   params.require(:person).permit(:email, :name)
+    # end
     
 
 
