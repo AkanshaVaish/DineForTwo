@@ -1,10 +1,19 @@
 class PeopleController < ApplicationController
 
+  def index
+    @person =Person.all
+  end
+  
   #Method to show the user profile
   def show
     @person = Person.find(params[:id])
   end
-
+  
+  #Method pop up the current user profile and allow user to edit it
+  def edit
+    @person = Person.find(params[:id])
+  end
+  
   #Method new to create a new sign up
   def new
     @person = Person.new
@@ -21,18 +30,14 @@ class PeopleController < ApplicationController
     end
   end
   
-  #Method pop up the current user profile and allow user to edit it
-  def edit
-    @person = Person.find(params[:id])
-  end
-  
+  #Method updates the user data to DB
   def update
     @person =  Person.find(params[:id])
     
-    if @person.update_attributes(person_edit_params)
-      redirect_to person_path, :notice => "Your profile has been updated!"
+    if @person.update(person_params)
+      redirect_to @person
     else
-      render edit_person_path
+      render 'edit'
     end
   end
   
