@@ -1,11 +1,20 @@
 class PeopleController < ApplicationController
 
-  # Method to show the user profile
+  def index
+    @person =Person.all
+  end
+  
+  #Method to show the user profile
   def show
     @person = Person.find(params[:id])
   end
-
-  # Method new to create a new sign up
+  
+  #Method pop up the current user profile and allow user to edit it
+  def edit
+    @person = Person.find(params[:id])
+  end
+  
+  #Method new to create a new sign up
   def new
     @person = Person.new
   end
@@ -22,11 +31,35 @@ class PeopleController < ApplicationController
       render 'new'
     end
   end
+  
+  #Method updates the user data to DB
+  def update
+    @person =  Person.find(params[:id])
+    
+    if @person.update_attributes(person_edit_params)
+      redirect_to @person, :notice => "Update success"
+    else
+      render 'edit'
+    end
+  end
+  
+  #Method delete user's account data
+  def destroy
+    @person = Person.find(params[:id])
+    @person.destroy
+    redirect_to root_url, :notice => "Your Profile has been deleted."
+  end
 
   private
     def person_params
       params.require(:person).permit(:email, :name, :password, :password_confirmation)
     end
+    
+    #Parameters allowed for edit
+    def person_edit_params
+      params.require(:person).permit(:email, :name)
+    end
+    
 
 
 end
