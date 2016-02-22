@@ -24,7 +24,7 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     # if saved succesfully should go back to root_url and output signed up
     if @person.save
-      log_in @user # Logs in the user after a successful sign up
+      log_in @person # Logs in the user after a successful sign up
       flash[:success] = "Successfully signed up for Dine for Two!"
       redirect_to @person
     else
