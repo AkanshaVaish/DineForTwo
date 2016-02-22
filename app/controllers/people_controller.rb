@@ -45,7 +45,7 @@ class PeopleController < ApplicationController
   def destroy
     @person = Person.find(params[:id])
     @person.destroy
-    redirect_to root_url
+    redirect_to root_url, :notice => "Your Profile has been deleted."
   end
 
   private
