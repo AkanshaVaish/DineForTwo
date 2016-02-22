@@ -27,5 +27,7 @@ class PeopleSignupTest < ActionDispatch::IntegrationTest
     assert_template 'people/show'
     assert_not flash.empty?
     # Assert that flash is not empty
+    assert is_logged_in?
+    # Assert that user is logged in after a successful sign up.
   end
 end
