@@ -37,6 +37,7 @@ class Person < ActiveRecord::Base
   
   # Returns true if the given token matches the digest in the database.
   def authenticated?(remember_token)
+    return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
     # ActiveRecord knows that remember_digest is referring to a model attribute.
   end

@@ -29,9 +29,21 @@ class PeopleLoginTest < ActionDispatch::IntegrationTest
     delete log_out_path
     assert_not is_logged_in? # Log out is successful.
     assert_redirected_to root_url
+    delete log_out_path # Simulate a user logging out in another window.
     follow_redirect!
     assert_select "a[href=?]", log_in_path, count: 1
     assert_select "a[href=?]", log_out_path, count: 0
     assert_select "a[href=?]", person_path(@person), count: 0
   end
+  
+  test "login with remembering" do
+    log_in_as(@person, remember_me: '1')
+    assert_equal cookies['remember_token'], assigns(:person).remember_token
+  end
+
+  test "login without remembering" do
+    log_in_as(@person, remember_me: '0')
+    assert_nil cookies['remember_token']
+  end
+
 end

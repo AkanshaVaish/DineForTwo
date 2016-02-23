@@ -19,7 +19,7 @@ module SessionsHelper
     if (person_id = session[:person_id])
       # If a temporary session exists, use that.
       @current_user ||= Person.find_by(id: person_id)
-    elsif (user_id = cookies.signed[:person_id])
+    elsif (person_id = cookies.signed[:person_id])
       # If cookies exist, use them.
       person = Person.find_by(id: person_id)
       # Extract id from the database.
@@ -47,7 +47,8 @@ module SessionsHelper
   end
   
   def log_out
-    forget(current_user)
+    forget(current_user) 
+    # Forgets the user in the database and clears any cookies.
     session.delete(:person_id)
     @current_user = nil
     # Sets current user to nil, just in case.
