@@ -19,12 +19,14 @@ There is also a trick to our system that aims to uphold accountability with the 
 
 ### User Stories
 	As a <role>, I want <feature> so that <reason>.
+	
 * Current stories:
  * As a user, I want a short tutorial on my first visit so that I know what the service offers.
  * As a user, I want to sign up so that I can start using Dinner for Two.
  * As a user, I want to log in so that I can keep track of my saved restaurants.
  * As a user, I want to be able to login with Facebook/Twitter so that I don't have to sign up with my email.
  * As an administrator, I want to log in so that I can manage user accounts. (EPIC)
+
 * Future stories:
  * As a user, I want to be able to choose to ‘forgive’ a person for not showing up so that his deposit is not taken from him/her. (EPIC)
  * As a user, I want more advanced search options so that I can choose from dates known to flake more often than others (for free meals). (EPIC)
