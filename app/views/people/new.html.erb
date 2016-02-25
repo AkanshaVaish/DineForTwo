@@ -1,27 +1,72 @@
+<html>
+<head> <title> Dine For Two </title>
+  <meta charset="UTF-8">
+</head>
+<body>
 <% provide(:title, "Sign Up") %>
-<h1> Sign Up </h1>
+<!-------------------------------------------------------
+<script>
+  //This is called with the results from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+  }
+  // The response object is returned with a status field that lets the
+  // app know the current login status of the person.
+  // Full docs on the re --->
+<h1><button type="submit" class="btn btn-primary" id="toggle_signin"> Sign Up </button> </h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@person) do |f| %>
-      <%= render 'shared/error_messages' %>
 
-      <!-- Text fields for signing up:  -->
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-      
-      <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control' %>
-  
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-  
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-  
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-  
-    <% end %>
-    <p> Already have an account? <%= link_to "Log in", log_in_path %> </p> 
+
+<div id="signupForm">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <%= form_for(@person) do |f| %>
+        <%= render 'shared/error_messages' %>
+
+        <!-- Text fields for signing up:  -->
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Create my account", class: "btn btn-primary" %>
+
+      <% end %>
+
+    </div>
   </div>
 </div>
+<!---FB LOGIN BUTTON -->
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
+<div id="status"> </div>
+<!---APP login button-->
+<h1> <%= button_to 'Log in', log_in_path, :class => "loginbtn", :method => :get %> </h1>
+
+
+<!----- FACEBOOK LIKE AND SHARE BUTTON --->
+<div id="fblikebtn">
+<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"> </div>
+</div>
+
+<!--------------------------------------------------------------->
+<!---jquery script to toggle the sign in form -->
+<script>
+
+  $('#toggle_signin').click(function(){
+    $('#signupForm').slideToggle();
+  });
+
+</script>
+<!--------------------------------------------------->
+
+</body>
+</html>

@@ -1,3 +1,24 @@
 // Place all the styles related to the people controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#signupForm {display: none;}
+
+.loginbtn {
+  font-size: medium;
+  border-radius: 7px;
+  width: 80px;
+  padding: 7px;
+  background-color: #74DF00;
+  color: white;
+}
+.loginbtn:hover{
+  background-color: #04B431;
+}
+
+#fblikebtn{
+  width: 80px;
+  margin: auto;
+
+}
