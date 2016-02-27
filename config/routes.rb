@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   post 'log_in' => 'sessions#create'
   delete 'log_out' => 'sessions#destroy'
 
-  get "sign_up" => "people#new", :as => "sign_up"
-  #   ^
-  # This part of the syntax already creates a named route, so it isn't
-  # necessary to add :as => 'sign_up' to create the named route, as seen above.
-  
+  get "sign_up" => "people#new"
+
+
   resources :people
   resources :sessions
 end
