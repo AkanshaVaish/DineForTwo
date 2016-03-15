@@ -1,15 +1,8 @@
-<html>
-<head> <title> Dine For Two </title>
-  <meta charset="UTF-8">
-</head>
-<body>
+<% provide(:title, "Sign Up") %>
+<h1>Sign Up</h1>
+<!--<h1><button type="submit" class="btn btn-primary" id="toggle_signin"> Sign Up </button> </h1>-->
 
-
-<h1><button type="submit" class="btn btn-primary" id="toggle_signin"> Sign Up </button> </h1>
-
-
-
-<div id="signupForm">
+<!--<div id="signupForm">-->
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
@@ -35,22 +28,16 @@
 
     </div>
   </div>
-</div>
+<!--</div>-->
 
-<h1> <%= button_to 'Log in', log_in_path, :class => "loginbtn", :method => :get %> </h1>
+<!--<h1><%= link_to 'Log in', 'auth/facebook', class: "btn btn-primary" %></h1>-->
 
+<!--<script>-->
+<!--   $('#toggle_signin').click(function(){-->
+<!--     $('#signupForm').slideToggle();-->
+<!--   });-->
+<!--</script>-->
 
-<script>
-  $('#toggle_signin').click(function(){
-    $('#signupForm').slideToggle();
-  });
-</script>
-<!--------------------------------------------------->
 <!---FB LOGIN BUTTON -->
 
-
-
 <!---APP login button-->
-
-</body>
-</html>

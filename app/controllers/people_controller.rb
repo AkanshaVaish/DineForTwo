@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
   # Method create to save the user
   def create
     @person = Person.new(person_params)
-    # if saved succesfully should go back to root_url and output signed up
+    # If saved succesfully should go back to root_url and output signed up
     if @person.save
       log_in @person # Logs in the user after a successful sign up
       flash[:success] = "Successfully signed up for Dine for Two!"
@@ -23,12 +23,12 @@ class PeopleController < ApplicationController
     end
   end
 
-  #Method pop up the current user profile and allow user to edit it
+  # Method pop up the current user profile and allow user to edit it
   def edit
     @person = Person.find(params[:id])
   end
 
-  #Method to post the changes we made to the user using edit Method
+  # Method to post the changes we made to the user using edit Method
   def update
     @person = Person.find(params[:id])
     if @person.update_attributes(person_params)

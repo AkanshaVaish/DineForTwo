@@ -13,7 +13,7 @@ class Person < ActiveRecord::Base
   has_secure_password
   # Enforces validations on the virtual attributes password
   # and password_confirmation
-  validates :password, presence: true, length: {minimum: 6}
+  validates :password, presence: true, length: {minimum: 5}
 
   # Returns the hash digest of the given string.
   def Person.digest(string)
@@ -47,6 +47,8 @@ class Person < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
+  # Parses the OAuth authentication hash and writes values to a Person object
+  # in the database.
   class << self
     def from_omniauth(auth_hash)
       person = find_or_create_by(uid: auto_hash['uid'])

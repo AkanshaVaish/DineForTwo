@@ -7,7 +7,11 @@ class PersonTest < ActiveSupport::TestCase
   end
   
   # Tests that setup is successful.
+  # Failing because person is not valid.
   test "should be valid" do
+    # print @person.name
+    # print @person.email
+    # print @person.password
     assert @person.valid?
   end
   
