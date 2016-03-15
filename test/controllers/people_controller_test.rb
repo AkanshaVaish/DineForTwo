@@ -45,4 +45,20 @@ class PeopleControllerTest < ActionController::TestCase
     # Fails because redirected to log_in_url.
   end
   
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'Person.count' do
+      delete :destroy, id: @person
+    end
+    assert_redirected_to log_in_url
+  end
+
+  test "should redirect destroy when logged in as a non-admin" do
+    log_in_as(@other_person)
+    assert_no_difference 'Person.count' do
+      delete :destroy, id: @person
+    end
+    assert_redirected_to root_url
+    # Fails because redirected to log_in_url.
+  end
+  
 end

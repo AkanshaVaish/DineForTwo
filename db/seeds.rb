@@ -9,7 +9,8 @@
 Person.create!(name:  "Example Person",
              email: "example@dinefortwo.com",
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar",
+             admin: true)
 
 99.times do |n|
   name  = Faker::Name.name
