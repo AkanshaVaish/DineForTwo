@@ -12,6 +12,9 @@ gem 'turbolinks',   '2.3.0'
 gem 'jbuilder',     '2.2.3'
 gem 'sdoc',         '0.4.0', group: :doc
 gem 'omniauth-facebook'
+gem 'faker',                '1.4.2' # For populating the database.
+gem 'will_paginate',           '3.0.7' # For pagination of the users index.
+gem 'bootstrap-will_paginate', '0.0.10'
 
 #KOALA GEM FILE FOR FACEBOOK API
 gem "koala", "~> 2.2"

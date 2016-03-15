@@ -5,7 +5,8 @@ class PeopleController < ApplicationController
   # Calls correct_user before edit and update actions.
 
   def index
-    @people = Person.all
+    @people = Person.paginate(page: params[:page])
+    # params[:page] is automatically provided by will_paginate
   end
 
   # Method to show the user profile
