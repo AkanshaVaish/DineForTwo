@@ -1,8 +1,12 @@
 class PeopleController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update]
   # Calls logged_in_user before edit and update actions.
   before_action :correct_user, only: [:edit, :update]
   # Calls correct_user before edit and update actions.
+
+  def index
+    @people = Person.all
+  end
 
   # Method to show the user profile
   def show
