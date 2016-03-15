@@ -2,16 +2,12 @@ require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
   def setup
-    @person = Person.new(name: "John Doe", email: "john@example.com",
+    @person = Person.new(name: "Example User", email: "example@dinefortwo.com",
                           password: "foobar", password_confirmation: "foobar")
   end
   
   # Tests that setup is successful.
-  # Failing because person is not valid.
   test "should be valid" do
-    # print @person.name
-    # print @person.email
-    # print @person.password
     assert @person.valid?
   end
   
