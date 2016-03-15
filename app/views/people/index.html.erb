@@ -1,0 +1,15 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+<!--Looks for a @people object and automatically paginates.-->
+
+<ul class="users">
+  <% @people.each do |person| %>
+    <%= render @people %>
+    <!--Rails automatically iterates through the collection specified by @people-->
+    <!--and renders each one using the partial.-->
+  <% end %>
+</ul>
+
+<%= will_paginate %>

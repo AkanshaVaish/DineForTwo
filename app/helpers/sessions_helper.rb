@@ -14,6 +14,11 @@ module SessionsHelper
     # Encrypts id and remember_token and saves them as cookies.
   end
 
+  # Returns true if the given user is the current user.
+  def current_user?(user)
+    user == current_user
+  end
+
   # Returns the current logged in user.
   def current_user
     if (person_id = session[:person_id])
@@ -53,4 +58,23 @@ module SessionsHelper
     @current_user = nil
     # Sets current user to nil, just in case.
   end
+  
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+    # Delete after the redirect so that the user will not be forwarded to the
+    # same URL upon each login attempt.
+    # Redirects always wait for the rest of the code block to return before
+    # actually redirecting.
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
+    # Makes sure that the URL is saved only for a GET request because submitting
+    # DELETE, PATCH or POST will raise errors when the URL is expecting
+    # a GET request.
+  end
+  
 end

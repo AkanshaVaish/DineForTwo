@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311203838) do
+ActiveRecord::Schema.define(version: 20160315051908) do
 
   create_table "people", force: :cascade do |t|
     t.string   "email"
     t.string   "name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "uid"
     t.string   "image_url"
     t.string   "url"
+    t.boolean  "admin",           default: false
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true

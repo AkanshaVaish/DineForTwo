@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
 
   # Validates that all requried text is entered.
   before_save { email.downcase! }
-  # Downcases email before saving to the database
+  # Downcases email before saving to the database.
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true,
                     length: {maximum: 255},
@@ -12,8 +12,10 @@ class Person < ActiveRecord::Base
   validates :name,  presence: true, length: { maximum: 60}
   has_secure_password
   # Enforces validations on the virtual attributes password
-  # and password_confirmation
-  validates :password, presence: true, length: {minimum: 6}
+  # and password_confirmation.
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true
+  # allow_nil allows an exception to be made for an empty password field
+  # when updating a Person profile.
 
   # Returns the hash digest of the given string.
   def Person.digest(string)
@@ -47,6 +49,8 @@ class Person < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
+  # Parses the OAuth authentication hash and writes values to a Person object
+  # in the database.
   class << self
     def from_omniauth(auth_hash)
       person = find_or_create_by(uid: auto_hash['uid'])
