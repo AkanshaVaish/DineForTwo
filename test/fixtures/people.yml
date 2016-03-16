@@ -10,6 +10,7 @@ jane:
   name: Jane Doel
   email: jane@example.org
   password_digest: <%= Person.digest('password') %>
+  admin: false
   
 lana:
   name: Lana Kane

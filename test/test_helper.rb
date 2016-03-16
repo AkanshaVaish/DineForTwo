@@ -15,7 +15,7 @@ class ActiveSupport::TestCase
                                     password: password,
                                     remember_me: remember_me }
     else
-      session[:user_id] = person.id
+      session[:person_id] = person.id
     end
   end
 

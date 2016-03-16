@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   # Calls logged_in_user before index, edit, update and destroy actions.
+  # Before actions are applied to all actions by default.
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
@@ -64,7 +65,7 @@ class PeopleController < ApplicationController
 
     # Confirms a logged-in user.
     def logged_in_user
-      unless logged_in?
+      unless logged_in? # Sessions helper method.
         store_location
         flash[:danger] = "Please log in."
         redirect_to log_in_url
