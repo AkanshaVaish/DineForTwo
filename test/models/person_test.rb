@@ -8,7 +8,9 @@ class PersonTest < ActiveSupport::TestCase
   
   # Tests that setup is successful.
   test "should be valid" do
-    assert @person.valid?
+    assert @person.valid?, "#{@person.email.inspect} already exists."
+    # Because the only parameter that needs to be unique in our setup in email.
+    # inspect prints the string representation of a given object.
   end
   
   test "name should be present" do
