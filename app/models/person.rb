@@ -1,9 +1,12 @@
 class Person < ActiveRecord::Base
-  attr_accessor :remember_token
+  # Virtual attributes don't have a column in the database.
+  attr_accessor :remember_token, :activation_token
+  
+  # Callbacks defined via method references.
+  before_save :downcase_email
+  before_create :create_activation_digest
 
   # Validates that all requried text is entered.
-  before_save { email.downcase! }
-  # Downcases email before saving to the database.
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true,
                     length: {maximum: 255},
@@ -60,6 +63,19 @@ class Person < ActiveRecord::Base
       person.save!
       person
     end
+  end
+  
+  private
+  
+  # Converts email to all lower-case.
+  def downcase_email
+    self.email = email.downcase
+  end
+  
+  # Creates and assigns the activation token and digest.
+  def create_activation_digest
+    self.activation_token = Person.new_token
+    self.activation_digest = Person.digest(activation_token)
   end
 
 end
