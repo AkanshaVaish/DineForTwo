@@ -25,8 +25,7 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     # If saved succesfully should go back to root_url and output signed up.
     if @person.save
-      UserMailer.account_activation(@person).deliver_now
-      # Send the account activation email.
+      @person.send_activation_email # Class method.
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else
@@ -34,7 +33,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  # Method to pop up the current user profile and allow user to edit it.
   def edit
   end
 
