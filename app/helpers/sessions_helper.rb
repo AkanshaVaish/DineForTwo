@@ -28,7 +28,7 @@ module SessionsHelper
       # If cookies exist, use them.
       person = Person.find_by(id: person_id)
       # Extract id from the database.
-      if person && person.authenticated?(cookies[:remember_token])
+      if person && person.authenticated?(:remember, cookies[:remember_token])
         # Verify that the cookie matches the remember digest in the database.
         log_in person
         @current_user = person
