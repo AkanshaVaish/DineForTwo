@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # RESTful routes for People controller.
   resources :people
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   # Because the activation link will modify the user's activation status, we
   # model the activation as a RESTful resource.
   
