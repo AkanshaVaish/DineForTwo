@@ -13,6 +13,8 @@ class SessionsController < ApplicationController
       # Error message.
       render 'new'
     end
+    
+    # For Facebook login.
     # begin
     #   @person = Person.from_omniauth(request.env['omniauth.auth'])
     #   session[:user_id] = @person.id
@@ -27,6 +29,8 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     # Prevents errors when attempting to log out from multiple tabs.
     redirect_to root_url
+    
+    # For Facebook login.
     # if current_user
     #   session.delete(:user_id)
     #   flash[:success] = 'See you!'

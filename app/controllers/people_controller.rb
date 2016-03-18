@@ -25,9 +25,10 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     # If saved succesfully should go back to root_url and output signed up.
     if @person.save
-      log_in @person # Logs in the user after a successful sign up.
-      flash[:success] = "Successfully signed up for Dine for Two!"
-      redirect_to @person # Render user's profile.
+      UserMailer.account_activation(@person).deliver_now
+      # Send the account activation email.
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end
