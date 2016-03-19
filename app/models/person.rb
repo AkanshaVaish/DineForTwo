@@ -1,6 +1,6 @@
 class Person < ActiveRecord::Base
   # Virtual attributes don't have a column in the database.
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
   
   # Callbacks defined via method references.
   before_save :downcase_email
@@ -64,6 +64,18 @@ class Person < ActiveRecord::Base
   # Sends activation email.
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+  
+  # Sets the password reset attributes.
+  def create_reset_digest
+    self.reset_token = Person.new_token
+    update_attribute(:reset_digest,  Person.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # Sends password reset email.
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
   end
 
   # Parses the OAuth authentication hash and writes values to a Person object
