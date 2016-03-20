@@ -78,6 +78,12 @@ class Person < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
+  # Returns true if a password reset has expired.
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+    # Read as 'password reset sent earlier than two hours ago'.
+  end
+
   # Parses the OAuth authentication hash and writes values to a Person object
   # in the database.
   class << self
@@ -102,12 +108,6 @@ class Person < ActiveRecord::Base
   def create_activation_digest
     self.activation_token = Person.new_token
     self.activation_digest = Person.digest(activation_token)
-  end
-  
-  # Returns true if a password reset has expired.
-  def password_reset_expired?
-    reset_sent_at < 2.hours.ago
-    # Read as 'password reset sent earlier than two hours ago'.
   end
 
 end
