@@ -10,12 +10,11 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
   test "password resets" do
     get new_password_reset_path
     assert_template 'password_resets/new'
-    post password_resets_path, password_reset: { email: "" }
-    # Invalid email
+    post password_resets_path, password_reset: { email: "" } # Invalid email.
     assert_not flash.empty?
     assert_template 'password_resets/new'
     post password_resets_path, password_reset: { email: @person.email }
-    # Valid email
+    # Valid email.
     assert_not_equal @person.reset_digest, @person.reload.reset_digest
     # Check that a new reset_digest has been generated.
     assert_equal 1, ActionMailer::Base.deliveries.size
