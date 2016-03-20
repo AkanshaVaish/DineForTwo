@@ -103,5 +103,11 @@ class Person < ActiveRecord::Base
     self.activation_token = Person.new_token
     self.activation_digest = Person.digest(activation_token)
   end
+  
+  # Returns true if a password reset has expired.
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+    # Read as 'password reset sent earlier than two hours ago'.
+  end
 
 end
