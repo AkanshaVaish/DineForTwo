@@ -16,4 +16,15 @@ class UserMailerTest < ActionMailer::TestCase
     # assert_match returns true if the LHS string is in the RHS string.
   end
   
+  test "password_reset" do
+    person = people(:john)
+    person.reset_token = Person.new_token
+    mail = UserMailer.password_reset(person)
+    assert_equal "Password reset", mail.subject
+    assert_equal [person.email], mail.to
+    assert_equal ["noreply@example.com"], mail.from
+    assert_match person.reset_token,        mail.body.encoded
+    assert_match CGI::escape(person.email), mail.body.encoded
+  end
+  
 end
