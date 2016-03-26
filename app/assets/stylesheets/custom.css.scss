@@ -79,6 +79,10 @@ footer {
 h1 {
   text-align: center;
 }
+h3 {
+  text-align: center;
+  color: red;
+}
 
 /* forms */
 
@@ -118,4 +122,12 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+.personInfo{
+  text-align: left;
+}
+.personLable{
+  text-align: right;
+  color: green;
+  font-weight: bold;
 }
