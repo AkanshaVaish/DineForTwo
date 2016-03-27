@@ -39,7 +39,7 @@ Rails.application.configure do
   # Needed to enable email previews.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
-  host = 'rails-276-onethirdzero.c9users.io' # Edit as required.
+  host = 'localhost:3000' # Edit as required.
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
 
 end
