@@ -15,6 +15,7 @@ gem 'omniauth-facebook'
 gem 'faker',                '1.4.2' # For populating the database.
 gem 'will_paginate',           '3.0.7' # For pagination of the users index.
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'carrierwave' #this gem is used for file upload (profile pictures)
 
 #KOALA GEM FILE FOR FACEBOOK API
 gem "koala", "~> 2.2"

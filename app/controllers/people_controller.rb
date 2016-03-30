@@ -62,7 +62,7 @@ class PeopleController < ApplicationController
 
     def person_edit_params 
       params.require(:person).permit(:email, :name, :password, :password_confirmation, 
-                                        :gender, :company, :address, :bio)
+                                        :gender, :company, :address, :bio, :avatar)
     end
     # Before filters
 

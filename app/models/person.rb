@@ -1,4 +1,7 @@
 class Person < ActiveRecord::Base
+
+  #For profile picture uploading, mount_uploader
+  mount_uploader :avatar, AvatarUploader
   # Virtual attributes don't have a column in the database.
   attr_accessor :remember_token, :activation_token, :reset_token
   
