@@ -1,87 +1,25 @@
-<% provide(:title, "User Profile") %>
-  <h1>User Profile</h1>
-  <hr>
-	<div class="container">
-      <!-- left column -->
-      <div class="col-md-3">
-        <div class="text-center">
-          <%=image_tag("default_pic.jpg",:size => "150x150", :alt => "default_pic")%>
-          <h6>Upload a different photo...</h6>
-          
-          <input type="file" class="form-control">
-        </div>
-      </div>
-      
-      <!-- right form column -->
-      <div class="col-md-9 personal-info">
-        <!--<div class="alert alert-info alert-dismissable">-->
-        <!--  <a class="panel-close close" data-dismiss="alert">×</a> -->
-        <!--  <i class="fa fa-coffee"></i>-->
-        <!--  This is an <strong>.alert</strong>. Use this to show important messages to the user.-->
-        <!--</div>-->
-        <h3>Personal info</h3>
-        
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <div class="col-md-4 personLable">User Name: </div>
-            <div class="col-md-7 personInfo"><%= @person.name %></div>
-          </div>
-          
-          <div class="form-group">
-            <div class="col-md-4 personLable">User Email: </div>
-            <div class="col-md-7 personInfo"><%= @person.email %></div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-4 personLable">Gender:</div>
-            <div class="col-md-7 personInfo">
-              <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                 </select> 
-              </div>
-           </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-4 personLable">Company: </div>
-            <div class="col-md-7 personInfo"><input class="form-control" type="text" value=""></div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-4 personLable">Time Zone:</div>
-            <div class="col-md-7 personInfo">
-              <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
-                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                  <option value="Alaska">(GMT-09:00) Alaska</option>
-                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                  <option value="Arizona">(GMT-07:00) Arizona</option>
-                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                </select>
-              </div>
-           </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-4 personLable">Address: </div>
-            <div class="col-md-7 personInfo"><input class="form-control" type="text" value=""></div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-4 personLable">Intro: </div>
-            <div class="col-md-7 personInfo"><input class="form-control" type="text" value=""></div>
-          </div>
-         
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="reset" class="btn btn-default" value="Cancel">
-            </div>
-          </div>
-        </form>
-      </div>
-      </div>
-      </div>
-      <hr>
+<% provide(:title, "User Profile") %> 
+
+<h1> My Profile </h1>
+
+<p>
+	<strong> Name: </strong> 
+	<%= @person.name %>
+</p>
+
+<p> 
+	<strong> Company: </strong> 
+	<%= @person.company %> 
+<p>
+
+<p>
+	<strong> Address: </strong> 
+	<%= @person.address %>
+</p>
+
+<p> 
+	<strong> My Bio: </strong> 
+	<%= @person.bio %>
+</p>
+
+<%= link_to 'Edit Profile' , edit_person_path %>

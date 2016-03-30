@@ -38,7 +38,7 @@ class PeopleController < ApplicationController
 
   # Method post the changes we made to the user using edit action.
   def update
-    if @person.update_attributes(person_params)
+    if @person.update_attributes(person_edit_params)
       # Handle a successful update.
       flash[:success] = "Profile updated!"
       redirect_to @person
@@ -59,7 +59,11 @@ class PeopleController < ApplicationController
       params.require(:person).permit(:email, :name, 
                                       :password, :password_confirmation)
     end
-    
+
+    def person_edit_params 
+      params.require(:person).permit(:email, :name, :password, :password_confirmation, 
+                                        :gender, :company, :address, :bio)
+    end
     # Before filters
 
     # Confirms a logged-in user.

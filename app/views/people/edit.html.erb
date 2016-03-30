@@ -18,6 +18,18 @@
       <%= f.label :password_confirmation, 'Confirmation'%>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+
+      <%= f.label :company, 'Company' %>
+      <%= f.text_field :company, class: 'form-control' %>
+
+      <%= f.label :address, 'Your City' %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :bio, 'My Bio' %>
+      <%= f.text_field :bio, class: 'form-control' %>
+
+
+
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
   </div>
