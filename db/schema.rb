@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330083442) do
+ActiveRecord::Schema.define(version: 20160330235432) do
 
   create_table "people", force: :cascade do |t|
     t.string   "email"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20160330083442) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.integer  "person_id"
-    t.binary   "gender"
     t.text     "company"
     t.text     "address"
     t.text     "bio"
     t.string   "avatar"
+    t.string   "gender"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160330083442) do
     t.datetime "updated_at"
   end
 
+  add_index "reservations", ["person_id", "restaurant_id"], name: "index_reservations_on_person_id_and_restaurant_id", unique: true
   add_index "reservations", ["person_id"], name: "index_reservations_on_person_id"
   add_index "reservations", ["restaurant_id"], name: "index_reservations_on_restaurant_id"
 
