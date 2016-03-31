@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20160330083442) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-    t.integer  "person_id"
     t.binary   "gender"
     t.text     "company"
     t.text     "address"
@@ -39,23 +38,5 @@ ActiveRecord::Schema.define(version: 20160330083442) do
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["uid"], name: "index_people_on_uid", unique: true
-
-  create_table "reservations", force: :cascade do |t|
-    t.integer  "person_id"
-    t.integer  "restaurant_id"
-    t.datetime "reservation_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "reservations", ["person_id"], name: "index_reservations_on_person_id"
-  add_index "reservations", ["restaurant_id"], name: "index_reservations_on_restaurant_id"
-
-  create_table "restaurants", force: :cascade do |t|
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "name"
-    t.integer  "restaurant_id"
-  end
 
 end
