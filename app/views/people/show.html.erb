@@ -1,48 +1,59 @@
 <% provide(:title, "User Profile") %>
+  <h1>User Profile</h1>
+  <hr>
+	<div class="container">
 
-<h1> <%= @person.name %> </h1>
-<div class="container">
-	<!-- Left Column -->
-	<div class="col-md-3">
-		<div class="profie_pic">
-			<%= image_tag(@person.avatar, :size=> "150x150", :alt=> "profie_pic")%>
-			<%= form_for(@person) do |f| %>
-				<%= f.label :avatar, 'Change picture' %>
-      	<%= f.file_field :avatar %>
-			<% end %>
-		</div>
-	</div>
+      <div class="col-md-3">
+        <div class="text-center">
+          <%= image_tag(@person.avatar, :size=> "150x150", :alt=> "profie_pic")%>
+					<%= form_for(@person) do |f| %>
+						<%= f.label :avatar, 'Change picture' %>
+						<%= f.file_field :avatar %>
+					<% end %>
+        </div>
+      </div>
+      <div class="col-md-9 personal-info">
 
-	<!-- Right Column -->
+        <h3>Personal info</h3>
 
-	<div class="form-group">
-		<div class="col-md-4 title"> My Bio: </div>
-		<div class="col-md-7 bio_box"> <%= @person.bio %> </div>
-	</div>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="col-md-4 personLable">User Name: </div>
+            <div class="col-md-7 personInfo"><%= @person.name %></div>
+          </div>
 
-		<div class="form-group">
-			<div class="col-md-4 title"> Gender: </div>
-			<div class="col-md-7 gender_box"> <%= @person.gender %> </div>
-		</div>
+          <div class="form-group">
+            <div class="col-md-4 personLable">User Email: </div>
+            <div class="col-md-7 personInfo"><%= @person.email %></div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 personLable">Gender:</div>
+            <div class="col-md-7 personInfo">
+              <%= @person.gender %>
+              </div>
+           </div>
+          <div class="form-group">
+            <div class="col-md-4 personLable">Company: </div>
+            <div class="col-md-7 personInfo"><%= @person.company %> </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 personLable">Address: </div>
+            <div class="col-md-7 personInfo"><%= @person.address %></div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 personLable">My Bio: </div>
+            <div class="col-md-7 personInfo"><%= @person.bio %></div>
+          </div>
 
-		<div class="form-group">
-	 		<div class="col-md-4 title"> Company: </div>
-			<div class="col-md-7 company_box"> <%= @person.company %> </div>
-		</div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <%= link_to 'Edit Your Profile' , edit_person_path %>
 
-
-
-		<div class="form-group">
-			<div class="col-md-4 title"> Address: </div>
-			<div class="col-md-7 address_box"> <%= @person.address %> </div>
-		</div>
-
-
-
-	<div class="form-group">
-		<label class="col-md-3 control-label"></label>
-		<div class="col-md-8">
-			<%= link_to 'Edit Profile' , edit_person_path %>
-		</div>
-	</div>
-</div>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+      </div>
+      <hr>
