@@ -1,31 +1,48 @@
-<% provide(:title, "User Profile") %> 
+<% provide(:title, "User Profile") %>
 
-<h1> My Profile </h1>
-<%= image_tag(@person.avatar, :size=> "150x150", :alt=> "profie_pic")%>
-<p>
-	<strong> Name: </strong> 
-	<%= @person.name %>
-</p>
+<h1> <%= @person.name %> </h1>
+<div class="container">
+	<!-- Left Column -->
+	<div class="col-md-3">
+		<div class="profie_pic">
+			<%= image_tag(@person.avatar, :size=> "150x150", :alt=> "profie_pic")%>
+			<%= form_for(@person) do |f| %>
+				<%= f.label :avatar, 'Change picture' %>
+      	<%= f.file_field :avatar %>
+			<% end %>
+		</div>
+	</div>
 
-<p>
-	<strong> Gender: </strong>
-	<%= @person.gender %>
-</p>
+	<!-- Right Column -->
 
-<p> 
-	<strong> Company: </strong> 
-	<%= @person.company %> 
-<p>
+	<div class="form-group">
+		<div class="col-md-4 title"> My Bio: </div>
+		<div class="col-md-7 bio_box"> <%= @person.bio %> </div>
+	</div>
 
-<p>
-	<strong> Address: </strong> 
-	<%= @person.address %>
-</p>
+		<div class="form-group">
+			<div class="col-md-4 title"> Gender: </div>
+			<div class="col-md-7 gender_box"> <%= @person.gender %> </div>
+		</div>
 
-<p> 
-	<strong> My Bio: </strong> 
-	<%= @person.bio %>
-</p>
+		<div class="form-group">
+	 		<div class="col-md-4 title"> Company: </div>
+			<div class="col-md-7 company_box"> <%= @person.company %> </div>
+		</div>
 
 
-<%= link_to 'Edit Profile' , edit_person_path %>
+
+		<div class="form-group">
+			<div class="col-md-4 title"> Address: </div>
+			<div class="col-md-7 address_box"> <%= @person.address %> </div>
+		</div>
+
+
+
+	<div class="form-group">
+		<label class="col-md-3 control-label"></label>
+		<div class="col-md-8">
+			<%= link_to 'Edit Profile' , edit_person_path %>
+		</div>
+	</div>
+</div>
