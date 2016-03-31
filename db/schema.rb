@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330235432) do
+ActiveRecord::Schema.define(version: 20160331035033) do
 
   create_table "people", force: :cascade do |t|
     t.string   "email"
@@ -29,11 +29,7 @@ ActiveRecord::Schema.define(version: 20160330235432) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-<<<<<<< HEAD
-    t.binary   "gender"
-=======
     t.integer  "person_id"
->>>>>>> 7088564350309c8d974cd47f729e4fae39669d09
     t.text     "company"
     t.text     "address"
     t.text     "bio"
@@ -44,26 +40,19 @@ ActiveRecord::Schema.define(version: 20160330235432) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["uid"], name: "index_people_on_uid", unique: true
 
-<<<<<<< HEAD
-=======
-  create_table "reservations", force: :cascade do |t|
-    t.integer  "person_id"
-    t.integer  "restaurant_id"
-    t.datetime "reservation_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "people_restaurants", id: false, force: :cascade do |t|
+    t.integer "person_id"
+    t.integer "restaurant_id"
   end
 
-  add_index "reservations", ["person_id", "restaurant_id"], name: "index_reservations_on_person_id_and_restaurant_id", unique: true
-  add_index "reservations", ["person_id"], name: "index_reservations_on_person_id"
-  add_index "reservations", ["restaurant_id"], name: "index_reservations_on_restaurant_id"
+  add_index "people_restaurants", ["person_id"], name: "index_people_restaurants_on_person_id"
+  add_index "people_restaurants", ["restaurant_id"], name: "index_people_restaurants_on_restaurant_id"
 
   create_table "restaurants", force: :cascade do |t|
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
     t.string   "name"
-    t.integer  "restaurant_id"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
->>>>>>> 7088564350309c8d974cd47f729e4fae39669d09
 end
