@@ -4,7 +4,8 @@ class Person < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   # Virtual attributes don't have a column in the database.
   attr_accessor :remember_token, :activation_token, :reset_token
-  
+  #has_many_and_belongs_to association with restaurants 
+  has_and_belongs_to_many :restaurants
   # Callbacks defined via method references.
   before_save :downcase_email
   before_create :create_activation_digest
