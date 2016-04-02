@@ -38,10 +38,11 @@ $gray-medium-light: #eaeaea;
   margin-right: 10px;
   margin-top: 3px;
   font-size: 1.7em;
-  color: black;
+  color: red;
   // text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
+
   font-weight: bold;
   &:hover {
     color: black;
@@ -130,4 +131,14 @@ input {
   text-align: right;
   color: green;
   font-weight: bold;
+}
+
+body{
+  background-color: #19B0E3;
+}
+.checkbox{
+  color: blue;
+}
+.navbar.navbar-inverse{
+  background-color: #006666;
 }
