@@ -142,3 +142,19 @@ body{
 .navbar.navbar-inverse{
   background-color: #006666;
 }
+#left_side{
+  width: 50%;
+  float: left;
+  height: 50%;
+}
+#right_side{
+  width: 50%;
+  float: right;
+  height: 50%;
+}
+#home_page_list{
+  list-style-type: none;
+}
+#left_side_text{
+  color: white;
+}
