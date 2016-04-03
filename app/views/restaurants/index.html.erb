@@ -8,6 +8,12 @@
   <% @restaurants.each do |restaurant| %>
     <tr>
       <td><%= restaurant.name %></td>
+      <% if current_user %>
+        <th><%= link_to "favorite", favorite_restaurant_path(restaurant,  type: "favorite"), method: :put %>
+        </th>
+        <th><%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
+        </th>
+      <% end %>
     </tr>
   <% end %>
 </table>
