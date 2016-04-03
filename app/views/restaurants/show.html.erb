@@ -1,0 +1,7 @@
+<h1> Viewing Restaurant <%= @restaurant.name %> </h1>
+
+<% if current_user %>
+  <%= link_to "favorite", favorite_restaurant_path(@restaurant,  type: "favorite"), method: :put %>
+  <%= link_to "unfavorite", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put %>
+<% end %>
+<p> Hope you like the restaurant. </p>

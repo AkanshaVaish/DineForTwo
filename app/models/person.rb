@@ -1,10 +1,16 @@
 class Person < ActiveRecord::Base
 
+  #ASSOCIATIONS FOR PERSON RESTAURANT AND FAVORITE RESTAURANT
+
+  has_many :restaurants
+  has_many :favorite_restaurants
+  has_many :favorites, through: :favorite_restaurants, source: :restaurant
+
   #For profile picture uploading, mount_uploader
   mount_uploader :avatar, AvatarUploader
   # Virtual attributes don't have a column in the database.
   attr_accessor :remember_token, :activation_token, :reset_token
-  
+
   # Callbacks defined via method references.
   before_save :downcase_email
   before_create :create_activation_digest
@@ -46,7 +52,7 @@ class Person < ActiveRecord::Base
   # Returns true if the given token matches the digest in the database.
   def authenticated?(digest, token)
     digest = send("#{digest}_digest")
-    # Use metaprogramming to select the appropriate token attribute based on 
+    # Use metaprogramming to select the appropriate token attribute based on
     # the parameter digest.
     return false if digest.nil? # Digest does not exist in the database.
     BCrypt::Password.new(digest).is_password?(token)
@@ -57,7 +63,7 @@ class Person < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest, nil)
   end
-  
+
   # Activates an account.
   def activate
     update_attribute(:activated, true)
@@ -68,7 +74,7 @@ class Person < ActiveRecord::Base
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
-  
+
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = Person.new_token
@@ -99,14 +105,14 @@ class Person < ActiveRecord::Base
       person
     end
   end
-  
+
   private
-  
+
   # Converts email to all lower-case.
   def downcase_email
     self.email = email.downcase
   end
-  
+
   # Creates and assigns the activation token and digest.
   def create_activation_digest
     self.activation_token = Person.new_token
