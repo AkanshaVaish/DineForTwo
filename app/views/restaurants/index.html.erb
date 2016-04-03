@@ -13,9 +13,10 @@
         </th>
         <th><%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
         </th>
+        <th><%= link_to "view", restaurant_path(restaurant) %> </th>
       <% end %>
     </tr>
   <% end %>
 </table>
-
+<%= link_to 'My profile', current_user %>
 <%= link_to 'New restaurant', new_restaurant_path %>

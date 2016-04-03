@@ -1,0 +1,13 @@
+<h1> Edit <%= @restaurant.name %> </h1>
+
+<%= form_for :restaurant, url: restaurant_path(@restaurant), method: :patch do |f| %>
+  <p>
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', restaurants_path %>

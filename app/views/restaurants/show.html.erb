@@ -3,5 +3,11 @@
 <% if current_user %>
   <%= link_to "favorite", favorite_restaurant_path(@restaurant,  type: "favorite"), method: :put %>
   <%= link_to "unfavorite", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put %>
+
 <% end %>
+
 <p> Hope you like the restaurant. </p>
+
+<%= link_to "View restaurants", controller: 'restaurants' %>
+<%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+<%= link_to 'My profile', current_user %>
