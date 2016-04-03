@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331035033) do
+ActiveRecord::Schema.define(version: 20160403062753) do
+
+  create_table "favorite_restaurants", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.integer  "person_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "people", force: :cascade do |t|
     t.string   "email"
@@ -40,17 +47,9 @@ ActiveRecord::Schema.define(version: 20160331035033) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["uid"], name: "index_people_on_uid", unique: true
 
-  create_table "people_restaurants", id: false, force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "restaurant_id"
-  end
-
-  add_index "people_restaurants", ["person_id"], name: "index_people_restaurants_on_person_id"
-  add_index "people_restaurants", ["restaurant_id"], name: "index_people_restaurants_on_restaurant_id"
-
   create_table "restaurants", force: :cascade do |t|
+    t.integer  "person_id"
     t.string   "name"
-    t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
