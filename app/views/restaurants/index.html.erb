@@ -1,25 +1,59 @@
+<!--<h1> Listing all restaurants </h1>-->
+
+<!--<table>-->
+<!--  <tr>-->
+<!--    <th> Name </th>-->
+<!--  </tr>-->
+
+<!--  <% @restaurants.each do |restaurant| %>-->
+<!--    <tr>-->
+<!--      <td><%= restaurant.name %></td>-->
+<!--      <% if current_user %>-->
+<!--        <th><%= link_to "favorite", favorite_restaurant_path(restaurant,  type: "favorite"), method: :put %>-->
+<!--        </th>-->
+<!--        <th><%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>-->
+<!--        </th>-->
+<!--        <th><%= link_to "view", restaurant_path(restaurant) %> </th>-->
+<!--      <% end %>-->
+<!--    </tr>-->
+<!--  <% end %>-->
+<!--</table>-->
+<!--<%= link_to 'My profile', current_user %>-->
+<!--<%= link_to 'New restaurant', new_restaurant_path %>-->
+
+
+
 <h1> Listing all restaurants </h1>
+<hr>
+	<div class="container">
 
-<table>
-  <tr>
-    <th> Name </th>
-  </tr>
+      <div class="col-md-3">
+        <div class="text-center">
+				  
+				  
+				  
+        </div>
+      </div>
+      <div class="col-md-9">
 
-  <% @restaurants.each do |restaurant| %>
-    <tr>
-      <td><%= restaurant.name %></td>
-      <% if current_user %>
-        <th><%= link_to "favorite", favorite_restaurant_path(restaurant,  type: "favorite"), method: :put %>
-        </th>
-        <th><%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
-        </th>
-        <th><%= link_to "view", restaurant_path(restaurant) %> </th>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
-<<<<<<< HEAD
-=======
-<%= link_to 'My profile', current_user %>
->>>>>>> e74e12f440ae293d4b08d8b5d25697fe7237f492
-<%= link_to 'New restaurant', new_restaurant_path %>
+        <h3>Restaurants Name</h3>
+
+        <form class="form-horizontal" role="form">
+          <% @restaurants.each do |restaurant| %>
+          <div class="form-group">
+          <div class="col-md-4 Nametag">Name</div>
+            <div class="col-md-7 restaurantname"><%= restaurant.name %>
+            <p><%= link_to "favorite", favorite_restaurant_path(restaurant,  type: "favorite"), method: :put %>
+            <%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
+            <%= link_to "view", restaurant_path(restaurant) %></p></div>
+          </div>
+          <% end %>
+           <div class="form-group">
+          <div class="col-md-4 restaurantname1"><%= link_to 'My profile', current_user %></div>
+            <div class="col-md-7 restaurantname"><%= link_to 'New restaurant', new_restaurant_path %></div>
+          </div>
+        </form>
+      </div>
+      </div>
+      </div>
+      <hr>
