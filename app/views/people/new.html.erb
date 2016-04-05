@@ -1,28 +1,23 @@
+<div class="container-fluid">
 
-<% provide(:title, "Sign Up") %>
-<body>
-<div class="left_side">
-  <div class="left_side_text">
-    <h1> Connect with people <br>
-        that love the same <br>
-        food you do!! </h1>
-    <ul id="home_page_list">
-      <li> <h2> Select a restaurant. </h2> </li>
-      <li> <h2> Connect with someone. </h2> </li>
-      <li> <h2> Go eat, have fun and repeat </h2> </li>
-    </ul>
+  <div class="col-md-4 left_side">
+    <div>
+      <h1 class="titles"> Connect with people <br>
+          that love the same <br>
+          food you do!! </h1>
+      <ul id="home_page_list">
+        <li> <h2> Select a restaurant. </h2> </li>
+        <li> <h2> Connect with someone. </h2> </li>
+        <li> <h2> Go eat, have fun and repeat </h2> </li>
+      </ul>
+    </div>
   </div>
-</div>
-<div id="right_side">
 
-  <h1><button type="submit" class="btn btn-primary" id="toggle_signin"> Sign Up </button> </h1>
-
-  <div id="signupForm">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-
+  <div class="col-md-5 right_side">
+    
+      <div> 
         <%= form_for(@person) do |f| %>
-          <%= render 'shared/error_messages' %>
+        
 
           <!-- Text fields for signing up:  -->
           <%= f.label :name %>
@@ -36,27 +31,26 @@
 
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
-          <p>
-            <%= select_tag(:location_id, options_for_select(@locations), :prompt => "Select location.")%>
-          </p>
+                  
+          <%= select_tag(:location_id, options_for_select(@locations), {class: 'form-control', :prompt => "Select location"})%>
+               
           <%= f.submit "Create my account", class: "btn btn-primary" %>
 
         <% end %>
-
       </div>
     </div>
-
-  </div>
 </div>
-</body>
 
-<!--<h1><%= link_to 'Log in', 'auth/facebook', class: "btn btn-primary" %></h1>-->
+ 
 
-<script>
+
+
+
+<!--<script>
    $('#toggle_signin').click(function(){
     $('#signupForm').slideToggle();
    });
-</script>
+</script> -->
 
 <!---FB LOGIN BUTTON -->
 
