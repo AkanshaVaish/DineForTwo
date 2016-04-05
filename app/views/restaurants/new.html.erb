@@ -1,23 +1,23 @@
-<%= form_for :restaurant, url: restaurants_path do |f| %>
+<h1 class="titles"> Create New Restaurant </h1>
 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :avatar, 'Restaurant Picture' %>
-    <%= f.file_field :avatar %>
-  </p>
-  <p>
-    <%= f.label :description, 'Restaurant description' %>
-    <p class="description_box">
-      <%= f.text_field :description %>
-    </p>
-  <p>
-  <p>
-    <%= select_tag(:location_id, options_for_select(@locations), :prompt => "Select location.")%>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 sign_up">
+
+      <%= form_for :restaurant, url: restaurants_path do |f| %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name, :placeholder => "Name", class: 'form-control' %>
+          
+          
+        <%= f.label :avatar, 'Restaurant Picture' %>
+        <%= f.file_field :avatar, class: 'form-control'%>
+          
+          
+        <%= f.label :description, 'Restaurant description' %>
+        <%= f.text_field :description, :placeholder => "Description", class: 'form-control' %>
+            
+        <%= select_tag(:location_id, options_for_select(@locations), {class: 'form-control', :prompt => "Select location"})%>
+        <%= f.submit "Save changes", class: "btn btn-primary" %>
+         
+
+      <% end %>
