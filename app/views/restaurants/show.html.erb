@@ -1,7 +1,89 @@
 <h1> Viewing Restaurant <%= @restaurant.name %> </h1>
-
+<div class="left_side">
+  <div class="text-center">
+    <%= image_tag(@restaurant.avatar, :size=> "250x250", :alt=> "profie_pic")%>
+    <%= form_for(@restaurant) do |f| %>
+      <%= f.label :avatar, 'Change picture' %>
+      <%= f.file_field :avatar %>
+      <%= f.submit "Change", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<div class="right_side"
 <% if current_user %>
-  <%= link_to "favorite", favorite_restaurant_path(@restaurant,  type: "favorite"), method: :put %>
-  <%= link_to "unfavorite", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put %>
+  <p>
+    <%= link_to "favorite", favorite_restaurant_path(@restaurant,  type: "favorite"), method: :put %>
+  </p>
+  <p>
+    <%= link_to "unfavorite", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put %>
+  </p>
 <% end %>
+
 <p> Hope you like the restaurant. </p>
+<table>
+  <tr> <th>Favorited by <th> </tr>
+  <% @restaurant.favorite_restaurants.each do |favorite_restaurant| %>
+    <tr>
+      <td><%= favorite_restaurant.person.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if !current_user.location.blank? %>
+  <%= link_to "View restaurants", location_path(current_user.location_id) %>
+<% end %>
+
+<p>
+<%= link_to 'My profile', current_user %>
+</p>
+<p>
+<%= link_to "Edit", edit_restaurant_path(@restaurant) %>
+<p>
+<p>
+<%= link_to "Delete", restaurant_path(@restaurant), method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</p>
+</div>
+<!--
+<h1>Viewing Restaurant <%= @restaurant.name %></h1>
+  <hr>
+	<div class="container">
+
+      <div class="col-md-3">
+       <div class="form-group">
+         <%= image_tag(@restaurant.avatar, :size=> "250x250", :alt=> "profie_pic")%>
+         <%= form_for(@restaurant) do |f| %>
+           <%= f.label :avatar, 'Change picture' %>
+           <%= f.file_field :avatar %>
+           <%= f.submit "Change", class: "btn btn-primary" %>
+         <% end %>
+          </div>
+          <div class="form-group">
+            location in here
+          </div>
+
+          <div class="form-group">
+            rating in here
+          </div>
+      </div>
+      <div class="col-md-9 personal-info">
+
+        <h3><%= @restaurant.name %> info</h3>
+
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="text-center">descrtion in here </div>
+
+
+          </div>
+          <div class="form-group">
+            <div class="col-md-4 restaurantname1"><%= link_to "Edit", edit_restaurant_path(@restaurant) %></div>
+            <div class="col-md-7 restaurantname"><%= link_to 'My profile', current_user %></div>
+          </div>
+
+
+        </form>
+      </div>
+      </div>
+      </div>
+      <hr> -->

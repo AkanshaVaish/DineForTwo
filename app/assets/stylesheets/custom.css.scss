@@ -38,11 +38,10 @@ $gray-medium-light: #eaeaea;
   margin-right: 10px;
   margin-top: 3px;
   font-size: 1.7em;
-  color: red;
+  color: black;
   // text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
-
   font-weight: bold;
   &:hover {
     color: black;
@@ -133,28 +132,29 @@ input {
   font-weight: bold;
 }
 
-body{
-  background-color: #19B0E3;
-}
-.checkbox{
-  color: blue;
-}
-.navbar.navbar-inverse{
-  background-color: #006666;
-}
-#left_side{
-  width: 50%;
-  float: left;
-  height: 50%;
-}
-#right_side{
-  width: 50%;
-  float: right;
-  height: 50%;
-}
-#home_page_list{
-  list-style-type: none;
-}
-#left_side_text{
-  color: white;
-}
+// body{
+//   background-color: #19B0E3;
+// }
+// .checkbox{
+//   color: blue;
+// }
+// .navbar.navbar-inverse{
+//   background-color: #006666;
+// }
+// .left_side{
+//   width: 40%;
+//   float: left;
+//   height: 40%;
+// }
+// .right_side{
+//   width: 60%;
+//   float: right;
+//   height: 60%;
+// }
+// #home_page_list{
+//   list-style-type: none;
+// }
+// .left_side_text{
+//   color: white;
+// }
+

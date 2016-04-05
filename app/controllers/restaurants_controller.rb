@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
+    @locations = Location.all
   end
 
   def show
@@ -9,16 +10,33 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    @locations = Location.all.map{|l| [l.name, l.id]}
+  end
+
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+    @locations = Location.all.map{|l| [l.name, l.id]}
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.location_id = params[:location_id]
+    @restaurant.person_id = params[:person_id]
+      if @restaurant.save
+        flash[:info] = "Restaurant succesfully created."
+        redirect_to @restaurant
+      else
+        render 'new'
+      end
+  end
 
-    if @restaurant.save
-      flash[:info] = "Restaurant succesfully created."
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.location_id = params[:location_id]
+    if @restaurant.update(restaurant_params)
       redirect_to @restaurant
     else
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -39,9 +57,15 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def destroy
+    Restaurant.find(params[:id]).destroy
+    flash[:success] = "Restaurant deleted."
+    redirect_to restaurants_url
+  end
+
   private
     def restaurant_params
-      params.require(:restaurant).permit(:name)
+      params.require(:restaurant).permit(:name, :avatar)
     end
 
 end
