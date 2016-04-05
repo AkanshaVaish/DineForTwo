@@ -30,9 +30,7 @@ Rails.application.routes.draw do
     put :favorite, on: :member
   end
 
-  resource :friendships, only: [:create]
-
-  get '/friendships' => "friendships#create"
+  
 
 
 end
