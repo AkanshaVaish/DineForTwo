@@ -1,12 +1,7 @@
 class RestaurantsController < ApplicationController
   def index
-<<<<<<< HEAD
-    # @restaurants = Restaurant.all
-    @restaurants = Restaurant.paginate(page: params[:page])
-=======
     @restaurants = Restaurant.all
     @locations = Location.all
->>>>>>> 60b156124fddfd4bf6bf27d16a0d99c06c596a63
   end
 
   def show

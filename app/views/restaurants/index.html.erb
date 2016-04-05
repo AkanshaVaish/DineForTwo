@@ -15,43 +15,6 @@
       </div>
       <div class="col-md-9">
 
-<<<<<<< HEAD
-        <h3>Restaurants Name</h3>
-
-        <form class="form-horizontal" role="form">
-          <% @restaurants.each do |restaurant| %>
-          <div class="form-group">
-          <div class="col-md-4 Nametag">Name</div>
-            <div class="col-md-7 restaurantname"><%= restaurant.name %>
-            <p><%= link_to "favorite", favorite_restaurant_path(restaurant,  type: "favorite"), method: :put %>
-            <%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
-            <%= link_to "view", restaurant_path(restaurant) %></p></div>
-          </div>
-          <% end %>
-           <div class="form-group">
-          <div class="col-md-4 restaurantname1"><%= link_to 'My profile', current_user %></div>
-            <div class="col-md-7 restaurantname"><%= link_to 'New restaurant', new_restaurant_path %></div>
-          </div>
-        </form>
-      </div>
-      </div>
-      </div>
-      <hr>
-<%= will_paginate %>
-
-<!--<h1>All restaurants</h1>-->
-
-<!--<%= will_paginate %>-->
-<!--Looks for a @people object and automatically paginates.-->
-
-<!--  <ul class="users2">-->
-<!--    <%= render @restaurants %>-->
-    <!--Rails automatically iterates through the collection specified by @people-->
-    <!--and renders each one using the partial.-->
-<!--  </ul>-->
-
-<!--<%= will_paginate %>-->
-=======
   <% @restaurants.each do |restaurant| %>
     <tr>
       <td><%= restaurant.name %></td>
@@ -73,4 +36,3 @@
 
 <%= link_to 'My profile', current_user %>
 <%= link_to 'New restaurant', new_restaurant_path %>
->>>>>>> 60b156124fddfd4bf6bf27d16a0d99c06c596a63
