@@ -11,13 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403062753) do
+ActiveRecord::Schema.define(version: 20160404232617) do
 
   create_table "favorite_restaurants", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.integer  "person_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "person_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", force: :cascade do |t|
@@ -42,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160403062753) do
     t.text     "bio"
     t.string   "avatar"
     t.string   "gender"
+    t.integer  "location_id"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true
@@ -50,8 +64,12 @@ ActiveRecord::Schema.define(version: 20160403062753) do
   create_table "restaurants", force: :cascade do |t|
     t.integer  "person_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
+    t.string   "avatar"
+    t.text     "description"
+    t.integer  "ratings"
   end
 
 end

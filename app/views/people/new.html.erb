@@ -36,7 +36,9 @@
 
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
-
+          <p>
+            <%= select_tag(:location_id, options_for_select(@locations), :prompt => "Select location.")%>
+          </p>
           <%= f.submit "Create my account", class: "btn btn-primary" %>
 
         <% end %>

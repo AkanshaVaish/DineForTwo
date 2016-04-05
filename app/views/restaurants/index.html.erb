@@ -15,6 +15,7 @@
       </div>
       <div class="col-md-9">
 
+<<<<<<< HEAD
         <h3>Restaurants Name</h3>
 
         <form class="form-horizontal" role="form">
@@ -50,3 +51,26 @@
 <!--  </ul>-->
 
 <!--<%= will_paginate %>-->
+=======
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <% if current_user %>
+        <th><%= link_to "favorite", favorite_restaurant_path(restaurant,  type: "favorite"), method: :put %>
+        </th>
+        <th><%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
+        </th>
+
+        <th><%= link_to "view", restaurant_path(restaurant) %> </th>
+        <td> <%= link_to Location.find(restaurant.location_id).name, location_path(restaurant.location_id) %> </td>
+      <% end %>
+
+    </tr>
+  <% end %>
+
+</table>
+
+
+<%= link_to 'My profile', current_user %>
+<%= link_to 'New restaurant', new_restaurant_path %>
+>>>>>>> 60b156124fddfd4bf6bf27d16a0d99c06c596a63

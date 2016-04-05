@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :locations
   get 'password_resets/new'
   get 'password_resets/edit'
 
@@ -28,4 +29,10 @@ Rails.application.routes.draw do
   resources :restaurants do
     put :favorite, on: :member
   end
+
+  resource :friendships, only: [:create]
+
+  get '/friendships' => "friendships#create"
+
+
 end

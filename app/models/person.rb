@@ -5,15 +5,24 @@ class Person < ActiveRecord::Base
   has_many :restaurants
   has_many :favorite_restaurants
   has_many :favorites, through: :favorite_restaurants, source: :restaurant
+  belongs_to :location
 
   #For profile picture uploading, mount_uploader
   mount_uploader :avatar, AvatarUploader
   # Virtual attributes don't have a column in the database.
   attr_accessor :remember_token, :activation_token, :reset_token
+  #ASSOCIATIONS FOR MUTUAL FRIENDSHIPS AMONG PEOPLE
+  has_many :friendships
+  has_many :friends, through: :friendships, class_name: 'Person'
+
+  ###########
+
 
   # Callbacks defined via method references.
   before_save :downcase_email
   before_create :create_activation_digest
+
+
 
   # Validates that all requried text is entered.
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i

@@ -46,6 +46,7 @@
             <div class="col-md-4 personLable">My Bio: </div>
             <div class="col-md-7 personInfo"><%= @person.bio %></div>
           </div>
+<<<<<<< HEAD
 
           <div class="text-center"><h3> Listing favorited restaurants. </h3></div>
           
@@ -62,7 +63,51 @@
               <%= link_to 'Edit Your Profile' , edit_person_path %>
               
               <%= link_to "View restaurants", controller: 'restaurants' %>
+=======
+          <h1> Listing favorited restaurants. </h1>
+          <div>
+            <table>
+              <tr>
+                <th> Name </th>
+              </tr>
+              <% if !@person.favorites.nil? %>
+                <% @person.favorites.each do |favorite_restaurant| %>
 
+                  <tr>
+                    <th><%= favorite_restaurant.name %> </th>
+                    <th><%= link_to "view", restaurant_path(favorite_restaurant) %></th>
+                    <% if current_user.admin? %>
+                      <th><%= link_to "edit", edit_restaurant_path(favorite_restaurant) %> </th>
+                      <th><%= link_to "Delete", restaurant_path(favorite_restaurant), method: :delete,
+                                    data: { confirm: 'Are you sure?' } %></th>
+                    <% end %>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <% if current_user?(@person) %>
+                <%= link_to 'Edit Your Profile' , edit_person_path %>
+              <% end %>
+
+>>>>>>> 60b156124fddfd4bf6bf27d16a0d99c06c596a63
+
+              <% if !@person.location.blank? %>
+                <%= link_to "View restaurants", location_path(@person.location_id) %>
+                <%= link_to "View all locations", locations_path %>
+              <% end %>
+
+              <% if current_user.admin? %>
+              <p>
+                <%= link_to "Create restaurant", new_restaurant_path %>
+              </p>
+              <p>
+                <%= link_to "Create location", new_location_path %>
+              </p>
+              <% end %>
             </div>
           </div>
         </form>
