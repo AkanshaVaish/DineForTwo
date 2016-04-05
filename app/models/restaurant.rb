@@ -11,7 +11,7 @@ class Restaurant < ActiveRecord::Base
   belongs_to :location
 
   validates :name, presence: true
-
+  validates :description, presence: true
 
   mount_uploader :avatar, AvatarUploader
 end

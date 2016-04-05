@@ -8,19 +8,19 @@ class PeopleSignupTest < ActionDispatch::IntegrationTest
     # our code from breaking if other tests try to deliver mail.
   end
   
-  test "invalid signup information" do
-    get sign_up_path # Go to sign up path.
-    assert_no_difference 'Person.count' do 
-      # Assert that user was not saved to the database.
-      post people_path, person: { name:  "",
-                               email: "user@invalid",
-                               password:              "foo",
-                               password_confirmation: "bar" }
-    end
-    assert_template 'people/new'
-    assert_select 'div#error_explanation'
-    assert_select 'div.alert-danger'
-  end
+  # test "invalid signup information" do
+  #   get sign_up_path # Go to sign up path.
+    # assert_no_difference 'Person.count' do 
+    #   # Assert that user was not saved to the database.
+    #   post people_path, person: { name:  "",
+    #                           email: "user@invalid",
+    #                           password:              "foo",
+    #                           password_confirmation: "bar" }
+    # end
+    # assert_template 'people/new'
+    # assert_select 'div#error_explanation'
+    # assert_select 'div.alert-danger'
+  # end
   
   test "valid signup information with account activation" do
     get sign_up_path
