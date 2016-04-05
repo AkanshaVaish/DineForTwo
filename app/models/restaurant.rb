@@ -4,5 +4,10 @@ class Restaurant < ActiveRecord::Base
   has_many :favorite_restaurants
   has_many :favorited_by, through: :favorited_restaurants, source: :person
 
+  belongs_to :location
+
   validates :name, presence: true
+  validates :person_id, uniqueness: true
+
+  mount_uploader :avatar, AvatarUploader
 end

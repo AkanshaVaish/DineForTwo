@@ -13,10 +13,16 @@
         </th>
         <th><%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
         </th>
+
         <th><%= link_to "view", restaurant_path(restaurant) %> </th>
+        <td> <%= link_to Location.find(restaurant.location_id).name, location_path(restaurant.location_id) %> </td>
       <% end %>
+
     </tr>
   <% end %>
+
 </table>
+
+
 <%= link_to 'My profile', current_user %>
 <%= link_to 'New restaurant', new_restaurant_path %>

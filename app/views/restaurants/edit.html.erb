@@ -6,8 +6,12 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label :avatar, 'Restaurant Picture' %>
+    <%= f.file_field :avatar %>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>
-
+<%= select_tag(:location_id, options_for_select(@locations), :prompt => "Select location.") %>
 <%= link_to 'Back', restaurants_path %>

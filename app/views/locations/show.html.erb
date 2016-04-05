@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @location.name %>
+</p>
+<table>
+  <tr>
+    <th> Name: </th>
+  </tr>
+<% Restaurant.where(location_id: @location.id).each do |restaurant| %>
+  <th> <%= restaurant.name %> </th>
+  <th><%= link_to 'view', restaurant_path(restaurant) %></th>
+<% end %>
+</table>
+<%= link_to 'Edit', edit_location_path(@location) %> |
+
+<%= link_to 'All locations', locations_path %>
