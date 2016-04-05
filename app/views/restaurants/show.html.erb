@@ -27,7 +27,7 @@
           </thead>
 
           <tbody>
-            <% !@restaurants.favorite_restaurants.blank? %>
+            <% if !@restaurants.favorite_restaurants.blank? %>
               <% @restaurant.favorite_restaurants.each do |favorite_restaurant| %>
                 <tr>
                   <td> <%= favorite_restaurant.person.name %> </td>
@@ -60,6 +60,7 @@
               <%= link_to "View restaurants", location_path(current_user.location_id), class:"btn btn-info", id:"not_admin_buttons" %>
             <% end %>
           <% end %>
+
           <% if current_user.admin? %>
             <% if !current_user.location.blank? %>
               <%= link_to "View restaurants", location_path(current_user.location_id), class:"btn btn-info", id:"user_buttons" %>
