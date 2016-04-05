@@ -2,7 +2,7 @@
 <% provide(:title, "User Profile") %>
   <h1>User Profile</h1>
   <hr>
-	<div class="container-fuild">
+	<div class="container-fluid">
 
       <div class="col-md-4">
         <div class="text-center">
@@ -18,14 +18,14 @@
             <table style="width:100%">
               <tr>
                 <td> Name </td>
-                <td>Location</td>
+
               </tr>
               <% if !@person.favorites.nil? %>
                 <% @person.favorites.each do |favorite_restaurant| %>
 
                   <tr>
                     <td><%= favorite_restaurant.name %> </td>
-                    <td> location</td>
+
                     <td><%= link_to "view", restaurant_path(favorite_restaurant) %></td>
                     <% if current_user.admin? %>
                       <td><%= link_to "edit", edit_restaurant_path(favorite_restaurant) %> </td>
@@ -70,19 +70,21 @@
             <div class="col-md-4 personLable">My Bio: </div>
             <div class="col-md-7 personInfo"><%= @person.bio %></div>
           </div>
-          <div class="text-center">
+          <div class="text-center first_group">
             <% if !@person.location.blank? %>
-                <%= link_to "View restaurants", location_path(@person.location_id),class:"btn btn-info btn-defult" %>
+                <%= link_to "Restaurants near you", location_path(@person.location_id),class:"btn btn-info btn-defult" %>
                 <%= link_to "View all locations", locations_path,class:"btn btn-info btn-defult" %>
-              <% end %>
-              <p></p>
+            <% end %>
+            <%= link_to "All restaurants", restaurants_path, class:"btn btn-info btn-defult" %>
+
               </div>
-            <div class="text-center">
+            <div class="text-center second_group">
+
               <% if current_user?(@person) %>
                 <%= link_to 'Edit Your Profile' , edit_person_path,class:"btn btn-info btn-defult"%>
               <% end %>
               <% if current_user.admin? %>
-             
+
                 <%= link_to "Create restaurant", new_restaurant_path,class:"btn btn-info btn-defult" %>
                 <%= link_to "Create location", new_location_path,class:"btn btn-info btn-defult" %>
               <% end %>

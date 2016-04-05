@@ -1,18 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @location.name %>
-</p>
-<table>
-  <tr>
-    <th> Name: </th>
-  </tr>
-<% Restaurant.where(location_id: @location.id).each do |restaurant| %>
-  <th> <%= restaurant.name %> </th>
-  <th><%= link_to 'view', restaurant_path(restaurant) %></th>
-<% end %>
-</table>
-<%= link_to 'Edit', edit_location_path(@location) %> |
-
-<%= link_to 'All locations', locations_path %>
+<div class="container-fluid">
+  <div class="text-center">
+    <h1 class="titles">
+      <%= @location.name %>
+    </h1>
+  </div>
+  <div>
+    <% Restaurant.where(location_id: @location.id).each do |restaurant| %>
+      <div class="box_pos">
+        <span class="restaurant">
+          <%= link_to image_tag(restaurant.avatar, :size => "100x100", :alt => "restaurant_pic"), restaurant_path(restaurant) %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+  <div class=" text-center buttons">
+    <p>
+      <%= link_to 'Edit', edit_location_path(@location), class:"btn btn-primary", id:"user_buttons" %> |
+      <%= link_to 'All locations', locations_path, class:"btn btn-primary", id:"user_buttons" %>
+    </p>
+  </div>
+</div>

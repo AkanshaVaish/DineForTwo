@@ -1,38 +1,20 @@
-<%= will_paginate %>
-<h1> Listing all restaurants </h1>
-<hr>
-	<div class="container">
+<div class="container-fluid">
+	<div class="text-center">
+		<h1 class="titles">
+			All Restaurants
+		</h1>
+	</div>
 
-      <div class="col-md-3">
-        <div class="text-center">
-				  
-				  <h3>Here is all the Restaurant</h3>
-				  <h3>click the restaurant view to see the info</h3>
-				  <h3>choose which restaurant you like</h3>
-				  
-				  
-        </div>
-      </div>
-      <div class="col-md-9">
-
-  <% @restaurants.each do |restaurant| %>
-    <tr>
-      <td><%= restaurant.name %></td>
-      <% if current_user %>
-        <th><%= link_to "favorite", favorite_restaurant_path(restaurant,  type: "favorite"), method: :put %>
-        </th>
-        <th><%= link_to "unfavorite", favorite_restaurant_path(restaurant, type: "unfavorite"), method: :put %>
-        </th>
-
-        <th><%= link_to "view", restaurant_path(restaurant) %> </th>
-        <td> <%= link_to Location.find(restaurant.location_id).name, location_path(restaurant.location_id) %> </td>
-      <% end %>
-
-    </tr>
-  <% end %>
-
-</table>
-
-
-<%= link_to 'My profile', current_user %>
-<%= link_to 'New restaurant', new_restaurant_path %>
+	<div>
+		<% @restaurants.each do |restaurant| %>
+			<div class="box_pos">
+				<span class="restaurant">
+					<%= link_to image_tag(restaurant.avatar, :size => "100x100", :alt => "restaurant_pic"), restaurant_path(restaurant) %>
+				</span>
+			</div>
+		<% end %>
+	</div>
+	<div class="text-center buttons">
+		<%= link_to "New restaurant", new_restaurant_path, class:"btn btn-primary", id:"user_buttons" %>
+	</div>
+</div>
