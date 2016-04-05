@@ -2,9 +2,9 @@
 <% provide(:title, "User Profile") %>
   <h1>User Profile</h1>
   <hr>
-	<div class="container">
+	<div class="container-fuild">
 
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="text-center">
           <%= image_tag(@person.avatar, :size=> "250x250", :alt=> "profie_pic")%>
 					<%= form_for(@person) do |f| %>
@@ -13,8 +13,32 @@
             <%= f.submit "Change", class: "btn btn-primary" %>
 					<% end %>
         </div>
+          <div class="text-center"><h3> Listing favorited restaurants. </h3></div>
+          <div class="text-center">
+            <table style="width:100%">
+              <tr>
+                <td> Name </td>
+                <td>Location</td>
+              </tr>
+              <% if !@person.favorites.nil? %>
+                <% @person.favorites.each do |favorite_restaurant| %>
+
+                  <tr>
+                    <td><%= favorite_restaurant.name %> </td>
+                    <td> location</td>
+                    <td><%= link_to "view", restaurant_path(favorite_restaurant) %></td>
+                    <% if current_user.admin? %>
+                      <td><%= link_to "edit", edit_restaurant_path(favorite_restaurant) %> </td>
+                      <td><%= link_to "Delete", restaurant_path(favorite_restaurant), method: :delete,
+                                    data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
       </div>
-      <div class="col-md-9 personal-info">
+      <div class="col-md-8 personal-info">
 
         <h3>Personal info</h3>
 
@@ -46,64 +70,21 @@
             <div class="col-md-4 personLable">My Bio: </div>
             <div class="col-md-7 personInfo"><%= @person.bio %></div>
           </div>
-
-          <div class=="text-center"><h3> Listing favorited restaurants. </h3></div>
-
-
-          <div class="form-group">
-            <div class="col-md-4 personLable">Restaurants Name </div>
-            <div class="col-md-7 personInfo">
-            <% if !@person.favorites.nil? %>
-              <% @person.favorites.each do |favorite_restaurant| %>
-              <%= favorite_restaurant.name %>
-            <% end %>
-            <% end %>
-          </div>
-          </div>
-
-
-          
-          <div>
-            <table>
-              <tr>
-                <th> Name </th>
-              </tr>
-              <% if !@person.favorites.nil? %>
-                <% @person.favorites.each do |favorite_restaurant| %>
-
-                  <tr>
-                    <th><%= favorite_restaurant.name %> </th>
-                    <th><%= link_to "view", restaurant_path(favorite_restaurant) %></th>
-                    <% if current_user.admin? %>
-                      <th><%= link_to "edit", edit_restaurant_path(favorite_restaurant) %> </th>
-                      <th><%= link_to "Delete", restaurant_path(favorite_restaurant), method: :delete,
-                                    data: { confirm: 'Are you sure?' } %></th>
-                    <% end %>
-                  </tr>
-                <% end %>
+          <div class="text-center">
+            <% if !@person.location.blank? %>
+                <%= link_to "View restaurants", location_path(@person.location_id),class:"btn btn-info btn-defult" %>
+                <%= link_to "View all locations", locations_path,class:"btn btn-info btn-defult" %>
               <% end %>
-            </table>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
+              <p></p>
+              </div>
+            <div class="text-center">
               <% if current_user?(@person) %>
-                <%= link_to 'Edit Your Profile' , edit_person_path %>
+                <%= link_to 'Edit Your Profile' , edit_person_path,class:"btn btn-info btn-defult"%>
               <% end %>
-
-
-              <% if !@person.location.blank? %>
-                <%= link_to "View restaurants", location_path(@person.location_id) %>
-                <%= link_to "View all locations", locations_path %>
-              <% end %>
-
               <% if current_user.admin? %>
-              <p>
-                <%= link_to "Create restaurant", new_restaurant_path %>
-              </p>
-              <p>
-                <%= link_to "Create location", new_location_path %>
-              </p>
+             
+                <%= link_to "Create restaurant", new_restaurant_path,class:"btn btn-info btn-defult" %>
+                <%= link_to "Create location", new_location_path,class:"btn btn-info btn-defult" %>
               <% end %>
             </div>
           </div>
