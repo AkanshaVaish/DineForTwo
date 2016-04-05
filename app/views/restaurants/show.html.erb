@@ -27,11 +27,11 @@
           </thead>
 
           <tbody>
-            <% if !@restaurants.favorited_bys.blank? %>
-              <% @restaurant.favorited_bys.each do |favorited_by| %>
+            <% if !@restaurants.favorite_restaurants.blank? %>
+              <% @restaurant.favorite_restaurants.each do |favorited_by| %>
                 <tr>
                   <td> <%= favorited_by.person.name %> </td>
-                  <td> <%= favorited_by.person.location.name %> </td>
+                  
                 </tr>
               <% end %>
             <% end %>
