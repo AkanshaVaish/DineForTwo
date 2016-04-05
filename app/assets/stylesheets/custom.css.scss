@@ -142,19 +142,19 @@ body{
 .navbar.navbar-inverse{
   background-color: #006666;
 }
-#left_side{
-  width: 50%;
+.left_side{
+  width: 40%;
   float: left;
-  height: 50%;
+  height: 40%;
 }
-#right_side{
-  width: 50%;
+.right_side{
+  width: 60%;
   float: right;
-  height: 50%;
+  height: 60%;
 }
 #home_page_list{
   list-style-type: none;
 }
-#left_side_text{
+.left_side_text{
   color: white;
 }

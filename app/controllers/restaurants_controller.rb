@@ -21,6 +21,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.location_id = params[:location_id]
+    @restaurant.person_id = params[:person_id]
       if @restaurant.save
         flash[:info] = "Restaurant succesfully created."
         redirect_to @restaurant
@@ -28,13 +29,6 @@ class RestaurantsController < ApplicationController
         render 'new'
       end
   end
-  #   if @restaurant.save
-  #     flash[:info] = "Restaurant succesfully created."
-  #     redirect_to @restaurant
-  #   else
-  #     render 'new'
-  #   end
-  # end
 
   def update
     @restaurant = Restaurant.find(params[:id])
