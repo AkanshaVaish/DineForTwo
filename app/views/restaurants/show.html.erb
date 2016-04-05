@@ -1,89 +1,73 @@
-<h1> Viewing Restaurant <%= @restaurant.name %> </h1>
-<div class="left_side">
-  <div class="text-center">
-    <%= image_tag(@restaurant.avatar, :size=> "250x250", :alt=> "profie_pic")%>
-    <%= form_for(@restaurant) do |f| %>
-      <%= f.label :avatar, 'Change picture' %>
-      <%= f.file_field :avatar %>
-      <%= f.submit "Change", class: "btn btn-primary" %>
-    <% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+
+      <div class="text-center">
+        <%= image_tag(@restaurant.avatar, :size=> "250x250", :alt=> "profie_pic")%>
+        <% if current_user.admin? %>
+          <%= form_for(@restaurant) do |f| %>
+            <%= f.label :avatar, 'Change picture' %>
+            <%= f.file_field :avatar %>
+            <%= f.submit "Change", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th> Who liked <%= @restaurant.name %> </th>
+            </tr>
+            <tr>
+              <th> Name </th>
+              <th> Location </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @restaurant.favorite_restaurants.each do |favorite_restaurant| %>
+              <tr>
+                <td> <%= favorite_restaurant.person.name %> </td>
+                <td> <%= favorite_restaurant.person.location.name %> </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <h1> <%= @restaurant.name %> </h1>
+      <div class="text-center">
+        <div class="description_box">
+          <%= @restaurant.description %>
+        </div>
+        <% if current_user %>
+          <div>
+            <p>
+              <%= link_to "Like", favorite_restaurant_path(@restaurant,  type: "favorite"), method: :put, class:"btn btn-success btn-lg", id:"like_dislike" %>
+              <%= link_to "Dislike", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put, class:"btn btn-danger btn-lg", id:"like_dislike" %>
+            </p>
+          </div>
+        <% end %>
+        <p>
+          <% if !current_user.admin? %>
+            <% if !current_user.location.blank? %>
+              <%= link_to "View restaurants", location_path(current_user.location_id), class:"btn btn-info", id:"not_admin_buttons" %>
+            <% end %>
+          <% end %>
+          <% if current_user.admin? %>
+            <% if !current_user.location.blank? %>
+              <%= link_to "View restaurants", location_path(current_user.location_id), class:"btn btn-info", id:"user_buttons" %>
+            <% end %>
+            <%= link_to "Edit", edit_restaurant_path(@restaurant), class:"btn btn-info", id:"user_buttons" %>
+            <%= link_to "Delete", restaurant_path(@restaurant), method: :delete,
+                data: { confirm: 'Are you sure?' },class:"btn btn-info", id:"user_buttons" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
   </div>
 </div>
-<div class="right_side"
-<% if current_user %>
-  <p>
-    <%= link_to "favorite", favorite_restaurant_path(@restaurant,  type: "favorite"), method: :put %>
-  </p>
-  <p>
-    <%= link_to "unfavorite", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put %>
-  </p>
-<% end %>
-
-<p> Hope you like the restaurant. </p>
-<table>
-  <tr> <th>Favorited by <th> </tr>
-  <% @restaurant.favorite_restaurants.each do |favorite_restaurant| %>
-    <tr>
-      <td><%= favorite_restaurant.person.name %></td>
-    </tr>
-  <% end %>
-</table>
-
-<% if !current_user.location.blank? %>
-  <%= link_to "View restaurants", location_path(current_user.location_id) %>
-<% end %>
-
-<p>
-<%= link_to 'My profile', current_user %>
-</p>
-<p>
-<%= link_to "Edit", edit_restaurant_path(@restaurant) %>
-<p>
-<p>
-<%= link_to "Delete", restaurant_path(@restaurant), method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-</p>
-</div>
-<!--
-<h1>Viewing Restaurant <%= @restaurant.name %></h1>
-  <hr>
-	<div class="container">
-
-      <div class="col-md-3">
-       <div class="form-group">
-         <%= image_tag(@restaurant.avatar, :size=> "250x250", :alt=> "profie_pic")%>
-         <%= form_for(@restaurant) do |f| %>
-           <%= f.label :avatar, 'Change picture' %>
-           <%= f.file_field :avatar %>
-           <%= f.submit "Change", class: "btn btn-primary" %>
-         <% end %>
-          </div>
-          <div class="form-group">
-            location in here
-          </div>
-
-          <div class="form-group">
-            rating in here
-          </div>
-      </div>
-      <div class="col-md-9 personal-info">
-
-        <h3><%= @restaurant.name %> info</h3>
-
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <div class="text-center">descrtion in here </div>
-
-
-          </div>
-          <div class="form-group">
-            <div class="col-md-4 restaurantname1"><%= link_to "Edit", edit_restaurant_path(@restaurant) %></div>
-            <div class="col-md-7 restaurantname"><%= link_to 'My profile', current_user %></div>
-          </div>
-
-
-        </form>
-      </div>
-      </div>
-      </div>
-      <hr> -->

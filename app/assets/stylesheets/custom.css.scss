@@ -158,3 +158,28 @@ body{
 .left_side_text{
   color: white;
 }
+#like_dislike{
+  width: 250px;
+  border-radius: 8px;
+
+}
+
+#user_buttons{
+  width: 166px;
+  border-radius: 8px;
+}
+
+#not_admin_buttons{
+  width: 500px;
+  border-radius: 8px;
+}
+
+.description_box{
+  width: 70%;
+  height: 200px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  margin: 10px auto;
+
+}

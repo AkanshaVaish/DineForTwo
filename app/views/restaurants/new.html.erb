@@ -9,6 +9,12 @@
     <%= f.file_field :avatar %>
   </p>
   <p>
+    <%= f.label :description, 'Restaurant description' %>
+    <p class="description_box">
+      <%= f.text_field :description %>
+    </p>
+  <p>
+  <p>
     <%= select_tag(:location_id, options_for_select(@locations), :prompt => "Select location.")%>
   </p>
   <p>
