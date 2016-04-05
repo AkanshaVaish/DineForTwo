@@ -132,29 +132,54 @@ input {
   font-weight: bold;
 }
 
-// body{
-//   background-color: #19B0E3;
-// }
-// .checkbox{
-//   color: blue;
-// }
-// .navbar.navbar-inverse{
-//   background-color: #006666;
-// }
-// .left_side{
-//   width: 40%;
-//   float: left;
-//   height: 40%;
-// }
-// .right_side{
-//   width: 60%;
-//   float: right;
-//   height: 60%;
-// }
-// #home_page_list{
-//   list-style-type: none;
-// }
-// .left_side_text{
-//   color: white;
-// }
 
+body{
+  background-color: #19B0E3;
+}
+.checkbox{
+  color: blue;
+}
+.navbar.navbar-inverse{
+  background-color: #006666;
+}
+.left_side{
+  width: 40%;
+  float: left;
+  height: 40%;
+}
+.right_side{
+  width: 60%;
+  float: right;
+  height: 60%;
+}
+#home_page_list{
+  list-style-type: none;
+}
+.left_side_text{
+  color: white;
+}
+#like_dislike{
+  width: 250px;
+  border-radius: 8px;
+
+}
+
+#user_buttons{
+  width: 166px;
+  border-radius: 8px;
+}
+
+#not_admin_buttons{
+  width: 500px;
+  border-radius: 8px;
+}
+
+.description_box{
+  width: 70%;
+  height: 200px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  margin: 10px auto;
+
+}
