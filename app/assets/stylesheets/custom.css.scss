@@ -206,3 +206,11 @@ body{
 .second_group{
   margin: 5px;
 }
+thead{
+  display: table-header-group;
+
+  color: blue;
+}
+th{
+  text-align: center;
+}
