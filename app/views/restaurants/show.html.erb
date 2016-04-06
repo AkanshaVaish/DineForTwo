@@ -49,8 +49,13 @@
         <% if current_user %>
           <div>
             <p>
+       
               <%= link_to "Like", favorite_restaurant_path(@restaurant,  type: "favorite"), method: :put, class:"btn btn-success btn-lg", id:"like_dislike" %>
-              <%= link_to "Dislike", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put, class:"btn btn-danger btn-lg", id:"like_dislike" %>
+             <%= link_to "Dislike", favorite_restaurant_path(@restaurant, type: "unfavorite"), method: :put, class:"btn btn-danger btn-lg", id:"like_dislike" %>
+
+
+
+            
             </p>
           </div>
         <% end %>

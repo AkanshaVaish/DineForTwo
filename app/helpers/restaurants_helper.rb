@@ -19,3 +19,4 @@ module RestaurantsHelper
     user == current_user
   end
 end
+

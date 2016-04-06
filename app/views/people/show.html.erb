@@ -121,11 +121,14 @@
 
               <% if current_user?(@person) && !current_user.admin? %>
                 <%= link_to 'Edit Your Profile' , edit_person_path,class:"btn btn-info btn-defult", id:"not_admin_buttons"%>
+              
+              <% elsif current_user?(@person) && current_user.admin? %>
+                <%= link_to 'Edit Your Profile', edit_person_path, class:"btn btn-info btn-default" %>
               <% end %>
               <% if current_user.admin? %>
-                <%= link_to "Edit Profile", edit_person_path, class:"btn btn-info btn-defult" %>
-                <%= link_to "Create restaurant", new_restaurant_path,class:"btn btn-info btn-defult" %>
-                <%= link_to "Create location", new_location_path,class:"btn btn-info btn-defult" %>
+                
+                <%= link_to "Create restaurant", new_restaurant_path,class:"btn btn-info btn-default" %>
+                <%= link_to "Create location", new_location_path,class:"btn btn-info btn-default" %>
               <% end %>
             </div>
           </div>
