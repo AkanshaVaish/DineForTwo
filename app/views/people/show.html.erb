@@ -17,7 +17,7 @@
           <div class="text-center">
             <table style="width:100%">
               <tr>
-                <td> Name </td>
+                <th> Name </th>
 
               </tr>
               <% if !@person.favorites.nil? %>
@@ -36,6 +36,36 @@
                 <% end %>
               <% end %>
             </table>
+            <!--------------------------- ---------------------------------------->
+            <table class="table table-hover">
+              <thead> 
+                <th> People with mutal intrests. </th>
+                <th> Name </th>
+              </thead>
+              <tbody>
+                <% if !@person.favorites.nil? %>
+                  <% @person.favorites.each do |favorite_restaurant| %>
+                    <% favorite_restaurant.favorite_restaurants.each do |favorited_by| %>
+                    <% if favorited_by.person != current_user %>
+                      <tr>
+                        <td>
+                          <%= link_to favorite_restaurant.name, restaurant_path(favorite_restaurant) %>
+                        </td>
+                        <td>
+                          <%= link_to favorited_by.person.name, person_path(favorited_by.person) %> 
+                        </td>
+                      </tr>
+                    <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+
+
+
+            <!-------------------------- ------------------------------------------>
+
           </div>
       </div>
       <div class="col-md-8 personal-info">
