@@ -209,12 +209,27 @@ body{
 thead{
   display: table-header-group;
 
-  color: blue;
+  color: black;
 }
 th{
+  text-align: center;
+}
+tr{
   text-align: center;
 }
 
 .sign_up{
   padding: 30px;
+}
+
+.location{
+  margin: 100px;
+  
+
+}
+#back_button{
+  width: 500px;
+  border-radius: 8px;
+  color: white;
+ 
 }

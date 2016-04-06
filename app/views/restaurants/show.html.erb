@@ -18,11 +18,11 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th> Who liked <%= @restaurant.name %> </th>
+              <th class="titles"> Who liked <%= @restaurant.name %> </th>
             </tr>
             <tr>
               <th> Name </th>
-              <th> Location </th>
+              
             </tr>
           </thead>
 
@@ -30,7 +30,7 @@
             
               <% @restaurant.favorite_restaurants.each do |favorited_by| %>
                 <tr>
-                  <td> <%= favorited_by.person.name %> </td>
+                  <td> <%= link_to favorited_by.person.name, person_path(favorited_by.person) %> </td>
                   
                 </tr>
               <% end %>
